@@ -1,0 +1,66 @@
+{% extends 'ProjectFrontBundle:Default:base.html.twig' %}
+{% block breadcrump %}
+    <div class="breadcrumb-container">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><i class="fa fa-home pr-10"></i><a href="{{ path('project_front_index_index') }}">Accueil</a></li>
+                <li class="active">Forum</li>
+            </ol>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    <section class="pv-40">
+        <div class="container">
+            <h2 class="text-center">Forum</h2>
+
+            {% if objects is null or objects|length == 0 %}
+                <p>Aucune catégorie</p>
+            {% else %}
+                {% for object in objects %}
+                    {% if loop.first or loop.index % 3 == 0 %}
+                        <div class="row">
+                    {% endif %}
+                    <div class="col-sm-4">
+                        <h3>{{ object.name }}</h3>
+                        <div class="image-box shadow bordered text-center mb-20">
+                            <div class="overlay-container">
+                                {% set image= object.imgPath is not null
+                                ? object.imgPath | imagine_filter('medium')
+                                : asset('bundles/projectfront/images/forum-amour.jpg') %}
+                                <img src="{{ image }}" alt="{{ object.alt|default('forum') }}">
+                                <a href="{{ path('project_front_forum_list', {'forum' :object.slug, 'page' :1}) }}"
+                                   class="overlay-link"><i
+                                            class="fa fa-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% if (loop.index % 3 == 0 and not loop.first) or loop.last %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </section>
+
+    <div class="dark-bg footer-top animated-text default-hovered">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="call-to-action text-center">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <h2>Powerful Bootstrap Template</h2>
+                                <h2>Waste no more time</h2>
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="mt-10"><a href="#" class="btn btn-animated btn-lg btn-gray-transparent">Purchase<i
+                                                class="fa fa-cart-arrow-down pl-20"></i></a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

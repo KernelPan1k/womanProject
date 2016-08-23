@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://symfony.com/schema/routing"
+        xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="fos_user_security_login" path="/91ee52e90fcdbaeed8d2275f59ac1b0c" methods="GET POST">
+        <default key="_controller">FOSUserBundle:Security:login</default>
+    </route>
+
+    <route id="fos_user_security_check" path="/login_check" methods="POST">
+        <default key="_controller">FOSUserBundle:Security:check</default>
+    </route>
+
+    <route id="fos_user_security_logout" path="/logout" methods="GET">
+        <default key="_controller">FOSUserBundle:Security:logout</default>
+    </route>
+
+    <import
+            resource="@FOSUserBundle/Resources/config/routing/profile.xml"
+            prefix="/profil"/>
+    <import
+            resource="@FOSUserBundle/Resources/config/routing/registration.xml"
+            prefix="/inscription"/>
+    <import
+            resource="@FOSUserBundle/Resources/config/routing/resetting.xml"
+            prefix="/nouveau-mot-de-passe"/>
+    <import
+            resource="@FOSUserBundle/Resources/config/routing/change_password.xml"
+            prefix="/profil"/>
+</routes>

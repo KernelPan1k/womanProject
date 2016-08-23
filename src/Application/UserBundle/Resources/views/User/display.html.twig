@@ -1,0 +1,133 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% extends 'ProjectFrontBundle:Default:base.html.twig' %}
+{% block breadcrump %}
+    <div class="breadcrumb-container">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><i class="fa fa-home pr-10"></i><a class="link-dark" href="{{ path('project_front_index_index') }}">Accueil</a>
+                </li>
+                <li class="active">Profil</li>
+            </ol>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    {% set background =
+    (object.bigImg is not null)
+    ? (object.getBackgroundPath()|imagine_filter('background'))
+    : 'bundles/projectfront/images/page-about-me-banner.jpg' %}
+    <div class="banner default-translucent-bg overlay-container overlay-visible"
+         style="background-image:url({{ asset(background) }}); background-position:50% 0;">
+    </div>
+    <section class="main-container">
+        <div class="container">
+            <div class="row">
+                <div class="main col-md-12">
+                    <h1 class="page-title">{{ object.username }}</h1>
+                    <div class="separator-2"></div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="image-box team-member shadow mb-20">
+                                <div class="overlay-container overlay-visible">
+                                    {% set avatar =
+                                    (object.img is not null)
+                                    ? (object.getAvatarPath()|imagine_filter('medium'))
+                                    : asset('bundles/projectfront/images/avatar.jpg') %}
+                                    <img src="{{ avatar }}"
+                                         alt="avatar" class="mauto">
+                                    <a class="overlay-link"><i class="icon-eye"></i></a>
+                                    <div class="overlay-bottom">
+                                        <div class="text">
+                                            <h3 class="title margin-clear">{{ object.username }}</h3>
+                                            <p class="margin-clear">{{ object.city.name|default }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="btn btn-animated btn-sm default-bg"
+                               href="{{ path('project_front_user_friends') }}">
+                                Liste d'amies<i class="pl-10 fa fa-user-secret"></i>
+                            </a>
+                            <a class="btn btn-animated btn-sm blue-bg" href="{{ path('project_front_user_post') }}">
+                                Ses actus<i class="pl-10 fa fa-angellist"></i>
+                            </a>
+                        </div>
+                        <div class="col-lg-4 col-sm-5">
+                            <div class="description-content">
+                                {% if object.description is not null and object.description is not empty %}
+                                    <p>
+                                        {{ object.description|nl2br }}
+                                    </p>
+                                {% else %}
+                                    <p>
+                                        Aucune description actuellement.
+                                    </p>
+                                {% endif %}
+                            </div>
+                            <div class="progress style-2 dark">
+                                <span class="text"></span>
+                                <div class="progress-bar progress-bar-white" role="progressbar"
+                                     data-animate-width="95%">
+                                    <span class="label object-non-visible" data-animation-effect="fadeInLeftSmall"
+                                          data-effect-delay="1000">Nombre d'amis</span>
+                                </div>
+                            </div>
+                            <div class="progress style-2 dark">
+                                <span class="text"></span>
+                                <div class="progress-bar progress-bar-white" role="progressbar"
+                                     data-animate-width="85%">
+                                    <span class="label object-non-visible" data-animation-effect="fadeInLeftSmall"
+                                          data-effect-delay="1000">Nombre de messages</span>
+                                </div>
+                            </div>
+                            <div class="progress style-2 dark">
+                                <span class="text"></span>
+                                <div class="progress-bar progress-bar-white" role="progressbar"
+                                     data-animate-width="95%">
+                                    <span class="label object-non-visible" data-animation-effect="fadeInLeftSmall"
+                                          data-effect-delay="1000">Nombre de sortie orgnisée</span>
+                                </div>
+                            </div>
+                            <div class="progress style-2 dark">
+                                <span class="text"></span>
+                                <div class="progress-bar progress-bar-white" role="progressbar"
+                                     data-animate-width="80%">
+                                    <span class="label object-non-visible" data-animation-effect="fadeInLeftSmall"
+                                          data-effect-delay="1000">Nombre de sortie réalisée</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-lg-offset-1">
+                            {% if object != app.user %}
+                                <a class="btn btn-animated btn-sm blue-bg" href="">
+                                    Demander en amis<i class="pl-10 fa fa-angellist"></i>
+                                </a>
+                            {% endif %}
+                            <h3 class="title">Informations personnelle</h3>
+                            <ul class="list-icons">
+                                <li><i class="fa fa-calendar-o pr-10"></i>Inscris le
+                                    : {{ object.createdAt|date('d/m/Y') }}</li>
+                                <li><i class="fa fa-envelope-o pr-10"></i>Email : {{ object.email }}</li>
+                                <li><i class="fa fa-calendar-o pr-10"></i>Néé le
+                                    : {{ object.dateOfBirth|date('d/m/Y') }}</li>
+                            </ul>
+                            <h3>Centre d'interets</h3>
+                            <div class="separator-2"></div>
+                            <div class="tags-cloud">
+                                {% for category in object.categorys %}
+                                    <div class="tag">
+                                        <a href="">{{ category.name }}</a>
+                                    </div>
+                                {% else %}
+                                    <p>
+                                        Aucun centre d'interets actuellement
+                                    </p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

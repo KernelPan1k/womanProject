@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+    <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="e5643f8a9f067d1a42c18a78ed0b469d" resname="form.firstName">
+                <source>form.firstName</source>
+                <target>Prénom</target>
+            </trans-unit>
+            <trans-unit id="90c6625c02db5919924fb36f0e9efb63" resname="form.lastName">
+                <source>form.lastName</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="dfcf595fbc42b5d5f96d7fef42db3824" resname="form.dateOfBirth">
+                <source>form.dateOfBirth</source>
+                <target>Date de naissance</target>
+            </trans-unit>
+            <trans-unit id="abcc36587d6c94e22193c307a99951ae" resname="form.cgu">
+                <source>form.cgu</source>
+                <target>J'accepte les %link_start%conditions générales d'utilisation%link_end%</target>
+            </trans-unit>
+            <trans-unit id="659bd677f7044c09a5e96d0dc87a0a10" resname="form.password.verify">
+                <source>form.password.verify</source>
+                <target>Vérification</target>
+            </trans-unit>
+            <trans-unit id="fcf1b04a9dc957e65e0214f50d76c9262" resname="form.password">
+                <source>form.password</source>
+                <target>Mot de passe</target>
+            </trans-unit>
+            <trans-unit id="01b234fe1a185c3a9f3804f284fcc8e2" resname="form.email">
+                <source>form.email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="9dbb4e93be23acd47c214cd7e1030121" resname="form.username">
+                <source>form.username</source>
+                <target>Pseudo</target>
+            </trans-unit>
+            <trans-unit id="b34ba99f6e66e343b71bf996baedd2da" resname="form.signup">
+                <source>form.signup</source>
+                <target>Inscription</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

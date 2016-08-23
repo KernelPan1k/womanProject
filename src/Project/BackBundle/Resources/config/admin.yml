@@ -1,0 +1,25 @@
+services:
+    project.back_bundle.datatable.user:
+        class: Project\BackBundle\Datatables\UserDatatable
+        parent: sg_datatables.datatable.abstract
+    project.back_bundle.datatable.news:
+        class: Project\BackBundle\Datatables\NewsDatatable
+        parent: sg_datatables.datatable.abstract
+    project.back_bundle.datatable.category:
+        class: Project\BackBundle\Datatables\CategoryDatatable
+        parent: sg_datatables.datatable.abstract
+    project.back_bundle.datatable.context:
+        class: Project\BackBundle\Datatables\ContextDatatable
+        parent: sg_datatables.datatable.abstract
+    project.back_bundle.datatable.taken:
+        class: Project\BackBundle\Datatables\TakenDatatable
+        parent: sg_datatables.datatable.abstract
+    project.back_bundle.datatable.forum:
+        class: Project\BackBundle\Datatables\ForumDatatable
+        parent: sg_datatables.datatable.abstract
+    project.back_bundle.datatable.forum_post:
+        class: Project\BackBundle\Datatables\ForumPostDatatable
+        parent: sg_datatables.datatable.abstract
+    project.back_bundle.datatable.post_response:
+        class: Project\BackBundle\Datatables\PostResponseDatatable
+        parent: sg_datatables.datatable.abstract

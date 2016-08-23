@@ -1,0 +1,23 @@
+{% block ajax_choice_widget %}
+    {% set default_label = "-- Sélectionnez une option --" %}
+    <select {{ block('widget_attributes') }} {% if multiple %} multiple="multiple"{% endif %}
+            data-ajax-url="{{ form.vars.url }}">
+        {% if form.vars.select_value is not empty %}
+            {%- if placeholder is not empty and form.vars.select_value is not iterable -%}
+                {# Single placeholder #} %}
+                <option value=""{% if required and value is empty %} selected="selected"{% endif %}>{{ placeholder != '' ? placeholder|trans({}, translation_domain) }}</option>
+            {%- endif -%}
+            {% if form.vars.select_value is iterable and multiple %}
+                {# Multiple values #} %}
+                {% for key,select_value in form.vars.select_value %}
+                    <option selected value="{{ value[key] }}">{{ select_value }}</option>
+                {% endfor %}
+            {% else %}
+                {# Single value #}
+                <option selected value="{{ value }}">{{ form.vars.select_value }}</option>
+            {% endif %}
+        {% else %}
+            <option value="">{{ default_label }}</option>
+        {% endif %}
+    </select>
+{% endblock ajax_choice_widget %}

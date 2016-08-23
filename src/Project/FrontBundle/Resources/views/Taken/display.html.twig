@@ -1,0 +1,219 @@
+{% extends 'ProjectFrontBundle:Default:base.html.twig' %}
+
+    {% block breadcrump %}
+        <div class="breadcrumb-container">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li><i class="fa fa-home pr-10"></i><a href="{{ path('project_front_index_index') }}">Accueil</a>
+                    </li>
+                    <li><i class="fa fa-home pr-10"></i><a href="{{ path('project_front_taken_index') }}">Sorties</a>
+                    </li>
+                    <li class="active">Voir</li>
+                </ol>
+            </div>
+        </div>
+    {% endblock %}
+
+{% block content %}
+    <section class="main-container">
+        <div class="container">
+            <div class="row">
+                <div class="main col-md-12">
+                    <h1 class="page-title">{{ object.title }}</h1>
+                    <div class="separator-2"></div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="overlay-container overlay-visible">
+                                {% set image = (object.img is not null)
+                                ? object.imgPath|imagine_filter('medium')
+                                : asset('bundles/projectfront/images/home-circle-4.jpg') %}
+                                <img src="{{ image }}"
+                                     alt="{{ object.alt|default('sortie') }}">
+                            </div>
+                        </div>
+                        <div class="col-md-8 pv-30">
+                            {% set nbr = object.nbrPossibleSubscriber() %}
+                            <span class="btn {{ nbr > 0 ? 'default-bg' : 'btn-gray' }} pull-right">
+                                Il reste {{ object.nbrPerson - object.nbrParticipate }} places
+                            </span>
+                            <h2>Descriptif</h2>
+                            <p>
+                                {{ object.description|nl2br }}
+                            </p>
+                            <hr class="mb-10">
+                            <div class="clearfix mb-20">
+                                <ul class="pl-20 pull-right social-links circle small clearfix margin-clear animated-effect-1">
+                                    <li class="twitter"><a target="_blank" href="http://www.twitter.com"><i
+                                                    class="fa fa-twitter"></i></a></li>
+                                    <li class="googleplus"><a target="_blank" href="http://plus.google.com"><i
+                                                    class="fa fa-google-plus"></i></a></li>
+                                    <li class="facebook"><a target="_blank" href="http://www.facebook.com"><i
+                                                    class="fa fa-facebook"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="row grid-space-10">
+                                <h4>Je souhaite y aller</h4>
+                                {% if object.startDate < 'now'|date %}
+                                    <p>Cette sortie est terminée.</p>
+                                {% elseif not app.user %}
+                                    <p>Vous devez vous connecter pour vous inscrire.</p>
+                                {% elseif object.alreadySubscribed(app.user) %}
+                                    <p>Vous souhaitez vous désinscrire de cette sortie ?.</p>
+                                    {{ form(unscribeForm, {'attr': { 'class' : 'form-inline'}}) }}
+                                {% elseif object.isComplete() %}
+                                    <p>Cette sortie est au complet.</p>
+                                {% elseif form is not null %}
+                                    {{ form(form, {'attr': { 'class' : 'form-inline'}}) }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="pv-30 light-gray-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <ul class="nav nav-tabs style-4" role="tablist">
+                        <li class="active"><a href="#h2tab2" role="tab" data-toggle="tab"><i
+                                        class="fa fa-files-o pr-5"></i>Specifications</a></li>
+                        <li>
+                            <a href="#h2tab3" role="tab" data-toggle="tab">
+                                <i class="fa fa-star pr-5"></i>
+                                ({{ object.comments|length }})
+                                Commentaires
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content padding-top-clear padding-bottom-clear">
+                        <div class="tab-pane fade in active" id="h2tab2">
+                            <h4 class="space-top">Specifications</h4>
+                            <hr>
+                            <dl class="dl-horizontal">
+                                <dt>Organisateur</dt>
+                                <dd>
+                                    <a href="{{ path('application_userbundle_user_public_profil', { 'slug' : object.slug }) }}">
+                                        {{ object.user.username }}
+                                    </a>
+                                </dd>
+                                <dt>Lieu</dt>
+                                <dd>{{ object.city.name }}</dd>
+                                <dt>Date</dt>
+                                <dd>{{ object.startDate|localizeddate('full') }}</dd>
+                                <dt>Nombre maximum de personnes</dt>
+                                <dd>{{ object.nbrPerson ~ ' personnes'|default('indéfini') }}</dd>
+                                <dt>Prix</dt>
+                                <dd>{{ object.price|default('indéfini') }}</dd>
+                            </dl>
+                            <hr>
+                        </div>
+                        <div class="tab-pane fade" id="h2tab3">
+                            <div class="comments margin-clear space-top">
+                                {% for comment in object.comments %}
+                                    <div class="comment clearfix">
+                                        <div class="comment-avatar">
+                                            {% set avatar =
+                                            (comment.user.img is not null)
+                                            ? (comment.user.getAvatarPath()|imagine_filter('small'))
+                                            : asset('bundles/projectfront/images/avatar.jpg') %}
+                                            <img class="img-circle"
+                                                 src="{{ avatar }}"
+                                                 alt="{{ comment.user.alt|default('commentaire') }}">
+                                        </div>
+                                        <header>
+                                            <div class="comment-meta"><i class="fa fa-star text-default"></i>
+                                                {{ comment.createdAt|localizeddate('full', 'none', 'fr') }}
+                                            </div>
+                                        </header>
+                                        <div class="comment-content">
+                                            <div class="comment-body clearfix">
+                                                <p>{{ comment.message|nl2br }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                <div class="comments-form">
+                                    <h2 class="title">Ecrire un commentaire</h2>
+                                    {% if object.startDate < 'now'|date %}
+                                        <p>Cette sortie est terminée.</p>
+                                    {% elseif not app.user %}
+                                        <p>Vous devez vous connecter pour vous inscrire.</p>
+                                    {% elseif commentForm is not null %}
+                                        {{ form(commentForm, {'id' : 'comment-form'}) }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <aside class="col-md-4 col-lg-3 col-lg-offset-1">
+                    <div class="sidebar">
+                        <div class="block clearfix">
+                            <h3 class="title">Personnes inscrites</h3>
+                            <div class="separator-2"></div>
+                            {% for participate in object.participates %}
+                            {% set avatar =
+                            (participate.user.img is not null)
+                            ? (participate.user.getAvatarPath()|imagine_filter('small'))
+                            : asset('bundles/projectfront/images/avatar.jpg') %}
+                            <div class="media margin-clear">
+                                <div class="media-left">
+                                    <div class="overlay-container">
+                                        <img class="media-object"
+                                             src="{{ avatar }}"
+                                             alt="{{ participate.user.alt|default('participant') }}">
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <h6 class="media-heading">
+                                        {% if app.user %}
+                                            <a href="{{ path('application_userbundle_user_public_profil',
+                                            {'slug' : participate.user.slug }) }}">
+                                                {{ participate.user.username }}
+                                            </a>
+                                        {% else %}
+                                            {{ participate.user.username }}
+                                        {% endif %}
+                                    </h6>
+                                    {% if participate.nbrPerson > 1 %}
+                                        +{{ participate.nbrPerson -1 }} amies
+                                    {% endif %}
+                                </div>
+                                <hr>
+                                {% else %}
+                                    <p>Aucune personne inscrite</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+    <div class="blue-bg  default-hovered footer-top animated-text">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="call-to-action text-center">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <h2>Powerful Bootstrap Template</h2>
+                                <h2>Waste no more time</h2>
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="mt-10"><a href="{# TODO #}"
+                                                    class="btn btn-animated btn-lg btn-gray-transparent ">Purchase<i
+                                                class="fa fa-cart-arrow-down pl-20"></i></a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

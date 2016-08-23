@@ -1,0 +1,38 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% if error %}
+    <div>
+        <p class="alert alert-danger text-center">{{ error.messageKey|trans(error.messageData, 'security') }}</p>
+    </div>
+{% endif %}
+<form action="{{ path("fos_user_security_check") }}" method="post" class="login-form margin-clear">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+
+    <div class="form-group has-feedback">
+        <label class="control-label" for="username">{{ 'security.login.username'|trans }}</label>
+        <input type="text" id="username" name="_username" required="required" placeholder="Pseudo"
+               class="form-control"/>
+        <i class="fa fa-user form-control-feedback"></i>
+    </div>
+
+    <div class="form-group has-feedback">
+        <label class="control-label" for="password">{{ 'security.login.password'|trans }}</label>
+        <input type="password" id="password" name="_password" required="required" placeholder="Mot de passe"
+               class="form-control"/>
+        <i class="fa fa-lock form-control-feedback"></i>
+    </div>
+    <div class="form-group has-feedback">
+        <label class="control-label" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+        &nbsp;
+        <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
+    </div>
+
+    <input class="btn btn-gray btn-sm" type="submit" id="_submit" name="_submit"
+           value="{{ 'security.login.submit'|trans }}"/>
+    <span class="pl-5 pr-5">ou</span>
+    <a class="btn btn-default btn-sm" href="{{ path('fos_user_registration_register') }}">
+        Inscription
+    </a>
+    <ul>
+        <li><a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié</a></li>
+    </ul>
+</form>

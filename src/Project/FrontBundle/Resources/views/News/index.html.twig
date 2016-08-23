@@ -1,0 +1,97 @@
+{% extends 'ProjectFrontBundle:Default:base.html.twig' %}
+{% block breadcrump %}
+    <div class="breadcrumb-container">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><i class="fa fa-home pr-10"></i><a href="{{ path('project_front_index_index') }}">Accueil</a></li>
+                <li class="active">Actualités</li>
+            </ol>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    <section class="main-container">
+        <div class="container">
+            <div class="row">
+                <div class="main col-md-12">
+                    <h1 class="page-title">Les actualités</h1>
+                    <div class="separator-2"></div>
+                    <div class="timeline">
+                        {% for o in object %}
+                            {% set position = (loop.index0 is odd) ? 'pull-right' : 'clearfix' %}
+                            {% if month is not defined or (month != o.createdAt|localizeddate('full', 'none', 'fr', null, 'MMMM Y')) %}
+                                {% set month = o.createdAt|localizeddate('full', 'none', 'fr', null, 'MMMM Y') %}
+                                <div class="timeline-date-label clearfix">{{ month }}</div>
+                            {% endif %}
+                            <div class="timeline-item {{ position }}">
+                                <article class="blogpost shadow light-gray-bg bordered">
+                                    <div class="overlay-container">
+                                        <img
+                                                src="{{ o.getImgPath()|imagine_filter('news') }}"
+                                                alt="{{ o.alt|default('actualité') }}"
+                                                class="img-center mauto">
+                                        <a class="overlay-link"
+                                           href="{{ path('project_front_news_display', {'slug' : o.slug }) }}">
+                                            <i class="fa fa-link"></i></a>
+                                    </div>
+                                    <header>
+                                        <h2>
+                                            <a href="{{ path('project_front_news_display', {'slug' : o.slug }) }}">{{ o.title }}</a>
+                                        </h2>
+                                        <div class="post-info">
+												<span class="post-date">
+													<i class="icon-calendar"></i>
+													<span class="day">{{ o.createdAt|localizeddate('full', 'none') }}</span>
+												</span>
+                                            <span class="submitted"><i
+                                                        class="icon-user-1"></i> par {{ o.author.username }}</span>
+                                            <span class="comments"><i class="icon-chat"></i> <a
+                                                        href="{# TODO #}">22 comments</a></span>
+                                        </div>
+                                    </header>
+                                    <div class="blogpost-content">
+                                        <p>
+                                            {{ o.teaser|nl2br }}
+                                        </p>
+                                    </div>
+                                    <footer class="clearfix">
+                                        <div class="tags pull-left"><i class="icon-tags"></i>
+                                            {{ o.category.name }}
+                                        </div>
+                                        <div class="link pull-right"><i class="icon-link"></i>
+                                            <a href="{{ path('project_front_news_display', {'slug' : o.slug }) }}">
+                                                Lise la suite
+                                            </a>
+                                        </div>
+                                    </footer>
+                                </article>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {{ knp_pagination_render(object) }}
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="default-bg  default-hovered footer-top animated-text">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="call-to-action text-center">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <h2>Powerful Bootstrap Template</h2>
+                                <h2>Waste no more time</h2>
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="mt-10"><a href="{# TODO #}"
+                                                    class="btn btn-animated btn-lg btn-gray-transparent ">Purchase<i
+                                                class="fa fa-cart-arrow-down pl-20"></i></a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,312 @@
+{% extends 'ProjectFrontBundle:Default:base.html.twig' %}
+{% block breadcrump %}
+    <div class="breadcrumb-container">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><i class="fa fa-home pr-10"></i><a class="link-dark" href="{{ path('project_front_index_index') }}">Accueil</a>
+                </li>
+                <li class="active">Sortie</li>
+            </ol>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    <div style="background-image:url({{ asset('bundles/projectfront/images/activity-banner.jpg') }}); background-position:50% 32%;"
+         class="banner dark-translucent-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 text-center col-md-offset-2 pv-20">
+                    <h2 class="title object-non-visible" data-animation-effect="fadeIn" data-effect-delay="100">Trouver
+                        une <strong>Sortie</strong></h2>
+                    <div class="separator object-non-visible mt-10" data-animation-effect="fadeIn"
+                         data-effect-delay="100"></div>
+                    <p class="text-center object-non-visible" data-animation-effect="fadeIn" data-effect-delay="100">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi perferendis magnam ea
+                        necessitatibus, officiis voluptas odit! Aperiam omnis, cupiditate laudantium velit nostrum,
+                        exercitationem accusamus, possimus soluta illo deserunt tempora qui.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="light-gray-bg section">
+        <div class="container">
+            <div class="sorting-filters text-center mb-20">
+                {{ form(form, { 'attr' : {'class' : "form-inline"}}) }}
+            </div>
+        </div>
+    </div>
+    <section class="main-container">
+        <div class="container">
+            <div class="row">
+                <div class="main col-md-9">
+                    {% for object in objects %}
+                        {% if loop.first or (day is defined and day < object.startDate|date('d')) %}
+                            {% set day = object.startDate|date('d') %}
+                            <div class="timeline-date-label clearfix">{{ object.startDate|localizeddate('full', 'none', 'fr') }}</div>
+                        {% endif %}
+                        <div class="listing-item mb-20 hovered">
+                            <a href="{{ path('project_front_taken_display', {'slug' : object.slug }) }}">
+                                <div class="row grid-space-0">
+                                    <div class="col-sm-6 col-md-4 col-lg-3">
+                                        <div class="overlay-container">
+                                            {% set url = '' %}
+                                            {% if object.imgPath is not null %}
+                                                {% set url=object.imgPath|imagine_filter('taken') %}
+                                            {% else %}
+                                                {% set url=asset('bundles/projectfront/images/home-circle-4.jpg') %}
+                                            {% endif %}
+                                            <img style="height: 100px;" class="circle"
+                                                 src="{{ url }}"
+                                                 alt="{{ object.alt }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-8 col-lg-9">
+                                        <div class="body">
+                                            <span class="price">{{ object.startDate|localizeddate('full', 'none') }}</span>
+                                            <h3 class="margin-clear" style="display: inline;">
+                                                {{ object.title }}
+                                            </h3>
+                                            <p>
+                                                {{ object.description|length > 150 ? object.description|nl2br|slice(0, 150) ~ '...' : object.description }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                    {{ knp_pagination_render(objects) }}
+                </div>
+                <aside class="col-md-3">
+                    <div class="sidebar">
+                        <div class="block clearfix">
+                            <a class="btn blue-bg" href="{{ path('project_front_taken_create') }}">
+                                Proposer une nouvelle sortie
+                            </a>
+                        </div>
+                        <div class="block clearfix">
+                            <h3 class="title">Best Sellers</h3>
+                            <div class="separator-2"></div>
+                            <div id="carousel-sidebar" class="carousel slide" data-ride="carousel">
+                                <!-- Indicators -->
+                                <ol class="carousel-indicators top">
+                                    <li data-target="#carousel-sidebar" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-sidebar" data-slide-to="1"></li>
+                                    <li data-target="#carousel-sidebar" data-slide-to="2"></li>
+                                </ol>
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="item active">
+                                        <div class="listing-item">
+                                            <div class="overlay-container">
+                                                <img src="{{ asset('bundles/projectfront/images/home-circle-3.jpg') }}"
+                                                     alt="product 1">
+                                                <span class="badge">30% OFF</span>
+                                                <a href="{# TODO display #}" class="overlay-link"><i
+                                                            class="fa fa-link"></i></a>
+                                            </div>
+                                            <h3><a href="{# TODO display #}">Suscipit consequatur velit</a></h3>
+                                            <span class="price"><del>$199.00</del> $150.00</span>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="listing-item">
+                                            <div class="overlay-container">
+                                                <img src="{{ asset('bundles/projectfront/images/home-circle-3.jpg') }}"
+                                                     alt="product 2">
+                                                <span class="badge">20% OFF</span>
+                                                <a href="{# TODO display #}" class="overlay-link"><i
+                                                            class="fa fa-link"></i></a>
+                                            </div>
+                                            <h3><a href="{# TODO display #}">Quas inventore modi lorem</a></h3>
+                                            <span class="price"><del>$199.00</del> $150.00</span>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="listing-item">
+                                            <div class="overlay-container">
+                                                <img src="{{ asset('bundles/projectfront/images/home-circle-4.jpg') }}"
+                                                     alt="product 3">
+                                                <span class="badge">40% OFF</span>
+                                                <a href="{# TODO display #}" class="overlay-link"><i
+                                                            class="fa fa-link"></i></a>
+                                            </div>
+                                            <h3><a href="{# TODO display #}">Consectetur adipisicing elit</a></h3>
+                                            <span class="price"><del>$199.00</del> $150.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block clearfix">
+                            <h3 class="title">Top Rated</h3>
+                            <div class="separator-2"></div>
+                            <div class="media margin-clear">
+                                <div class="media-left">
+                                    <div class="overlay-container">
+                                        <img class="media-object"
+                                             src="{{ asset('bundles/projectfront/images/home-circle-1.jpg') }}"
+                                             alt="blog-thumb">
+                                        <a href="{# TODO display #}" class="overlay-link small"><i
+                                                    class="fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <h6 class="media-heading"><a href="{# TODO display #}">Lorem ipsum dolor sit
+                                            amet</a>
+                                    </h6>
+                                    <p class="margin-clear">
+                                        <i class="fa fa-star text-default"></i>
+                                        <i class="fa fa-star text-default"></i>
+                                        <i class="fa fa-star text-default"></i>
+                                        <i class="fa fa-star text-default"></i>
+                                        <i class="fa fa-star text-default"></i>
+                                    </p>
+                                    <p class="price">$99.00</p>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="media margin-clear">
+                                <div class="media-left">
+                                    <div class="overlay-container">
+                                        <img class="media-object"
+                                             src="{{ asset('bundles/projectfront/images/home-circle-4.jpg') }}"
+                                             alt="blog-thumb">
+                                        <a href="{# TODO display #}" class="overlay-link small"><i
+                                                    class="fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <h6 class="media-heading"><a href="{# TODO display #}">Eum repudiandae ipsam</a>
+                                    </h6>
+                                    <p class="margin-clear">
+                                        <i class="fa fa-star text-default"></i>
+                                        <i class="fa fa-star text-default"></i>
+                                        <i class="fa fa-star text-default"></i>
+                                        <i class="fa fa-star text-default"></i>
+                                        <i class="fa fa-star"></i>
+                                    </p>
+                                    <p class="price">$299.00</p>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="media margin-clear">
+                                <div class="media-left">
+                                    <div class="overlay-container">
+                                        <img class="media-object"
+                                             src="{{ asset('bundles/projectfront/images/home-circle-1.jpg') }}"
+                                             alt="blog-thumb">
+                                        <a href="{# TODO display #}" class="overlay-link small"><i
+                                                    class="fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <h6 class="media-heading"><a href="{# TODO display #}">Quia aperiam velit
+                                            fuga</a>
+                                    </h6>
+                                    <p class="margin-clear">
+                                        <i class="fa fa-star text-default"></i>
+                                        <i class="fa fa-star text-default"></i>
+                                        <i class="fa fa-star text-default"></i>
+                                        <i class="fa fa-star text-default"></i>
+                                        <i class="fa fa-star"></i>
+                                    </p>
+                                    <p class="price">$9.99</p>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="media margin-clear">
+                                <div class="media-left">
+                                    <div class="overlay-container">
+                                        <img class="media-object"
+                                             src="{{ asset('bundles/projectfront/images/home-circle-3.jpg') }}"
+                                             alt="blog-thumb">
+                                        <a href="{# TODO display #}" class="overlay-link small"><i
+                                                    class="fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <h6 class="media-heading"><a href="{# TODO display #}">Fugit non natus
+                                            officiis</a>
+                                    </h6>
+                                    <p class="margin-clear">
+                                        <i class="fa fa-star text-default"></i>
+                                        <i class="fa fa-star text-default"></i>
+                                        <i class="fa fa-star text-default"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </p>
+                                    <p class="price">$399.00</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block clearfix">
+                            <h3 class="title">Categories</h3>
+                            <div class="separator-2"></div>
+                            <nav>
+                                <ul class="nav nav-pills nav-stacked list-style-icons">
+                                    <li><a href="#"><i class="fa fa-caret-right pr-10"></i>Diamonds</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right pr-10"></i>Clothes</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right pr-10"></i>Shoes</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right pr-10"></i>Watches</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right pr-10"></i>Accessories</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right pr-10"></i>Hats</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right pr-10"></i>Perfumes</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="block clearfix">
+                            <h3 class="title">End of Season Sales</h3>
+                            <div class="separator-2"></div>
+                            <p class="margin-clear">Debitis eaque officia illo impedit ipsa earum <a href="#">cupiditate
+                                    repellendus</a> corrupti nisi nemo, perspiciatis optio harum, hic laudantium
+                                nulla
+                                maiores rem sit magni neque nihil sequi temporibus. Laboriosam ipsum reiciendis
+                                iste,
+                                nobis obcaecati, a autem voluptatum odio? Recusandae officiis dicta quod qui
+                                eligendi.
+                            </p>
+                        </div>
+                        <div class="block clearfix">
+                            <form role="search">
+                                <div class="form-group has-feedback">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                    <i class="fa fa-search form-control-feedback"></i>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+    <section class="section blue-bg pv-40 clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="call-to-action text-center">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2">
+                                <h2 class="title"><strong>Recevoir par email</strong> les nouvelles sorties</h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus error pariatur
+                                    deserunt laudantium nam, mollitia quas nihil inventore, quibusdam?</p>
+                                <div class="separator"></div>
+                                <form class="form-inline margin-clear">
+                                    <div class="form-group has-feedback">
+                                        <label class="sr-only" for="subscribe3">Email address</label>
+                                        <input type="email" class="form-control form-control-lg" id="subscribe3"
+                                               placeholder="Enter email" name="subscribe3" required="">
+                                        <i class="fa fa-envelope form-control-feedback"></i>
+                                    </div>
+                                    <button type="submit"
+                                            class="btn btn-lg btn-gray-transparent btn-animated margin-clear">Submit <i
+                                                class="fa fa-send"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

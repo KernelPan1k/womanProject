@@ -1,0 +1,127 @@
+{% extends 'ProjectFrontBundle:Default:base.html.twig' %}
+
+{% block breadcrump %}
+    <div class="breadcrumb-container">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><i class="fa fa-home pr-10"></i><a href="{{ path('project_front_index_index') }}">Accueil</a></li>
+                <li class="active">Discutions</li>
+            </ol>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    <section class="main-container">
+        <div class="container">
+            <div class="row">
+                <div class="main col-md-12">
+                    <h1 class="page-title">{{ post.title }}</h1>
+                    <div class="comment-avatar">
+                        {% set avatar =
+                        (post.user.img is not null)
+                        ? (post.user.getAvatarPath()|imagine_filter('medium'))
+                        : asset('bundles/projectfront/images/avatar.jpg') %}
+                        <img alt="avatar" src="{{ avatar }}"
+                             class="img-circle">
+                    </div>
+                    <article class="blogpost full">
+                        <header>
+                            <div class="post-info">
+										<span class="post-date">
+											<i class="icon-calendar"></i>
+											<span class="month">
+                                                {{ post.createdAt|localizeddate('medium', 'none','fr', null, 'd MMM Y hh:m') }}
+                                            </span>
+										</span>
+                                <span class="submitted">
+                                    <i class="icon-user-1"></i> par
+                                    <a href="#">{{ post.user.username }}</a>
+                                </span>
+                            </div>
+                        </header>
+                        <div class="blogpost-content">
+                            <p>{{ post.description|nl2br }}</p>
+                        </div>
+                    </article>
+                    <div class="comments" id="comments">
+                        {% for object in objects %}
+                            <div class="comment clearfix comment-closest">
+                                <div class="comment-avatar">
+                                    {% set avatar =
+                                    (object.user.img is not null)
+                                    ? (object.user.getAvatarPath()|imagine_filter('medium'))
+                                    : asset('bundles/projectfront/images/avatar.jpg') %}
+                                    <img alt="avatar" src="{{ avatar }}" class="img-circle"/>
+                                </div>
+                                <header>
+                                    <div class="comment-meta">
+                                        Réponse de
+                                        <a href="{{ path('application_userbundle_user_public_profil',
+                                        {'slug' : object.user.slug }) }}">
+                                            {{ object.user.username }}
+                                        </a>
+                                        | {{ object.createdAt|localizeddate('medium', 'none','fr', null, 'd MMM Y hh:m') }}
+                                    </div>
+                                </header>
+                                <div class="comment-content">
+                                    <div class="comment-body clearfix">
+                                        <p>{{ object.message|nl2br }}</p>
+                                        <a class="btn-sm-link link-dark pull-right"
+                                           data-forum-parent="{{ object.id }}">
+                                            <i class="fa fa-reply"></i>
+                                            Répondre
+                                        </a>
+                                    </div>
+                                </div>
+                                {% if object.childs is defined and object.childs is not empty %}
+                                    {% for child in object.childs %}
+                                        <div class="comment clearfix">
+                                            <div class="comment-avatar">
+                                                {% set avatar =
+                                                (child.user.img is not null)
+                                                ? (child.user.getAvatarPath()|imagine_filter('medium'))
+                                                : asset('bundles/projectfront/images/avatar.jpg') %}
+                                                <img alt="avatar" src="{{ avatar }}" class="img-circle"/>
+                                            </div>
+                                            <header>
+                                                <div class="comment-meta">
+                                                    Réponse de
+                                                    <a href="{{ path('application_userbundle_user_public_profil',
+                                                    {'slug' : child.user.slug }) }}">
+                                                        {{ child.user.username }}
+                                                    </a>
+                                                    | {{ child.createdAt|localizeddate('medium', 'none','fr', null, 'd MMM Y hh:m') }}
+                                                </div>
+                                            </header>
+                                            <div class="comment-content">
+                                                <div class="comment-body clearfix">
+                                                    <p>{{ child.message|nl2br }}</p>
+                                                    {% if loop.last %}
+                                                        <a class="btn-sm-link link-dark pull-right"
+                                                           data-forum-parent="{{ object.id }}">
+                                                            <i class="fa fa-reply"></i>
+                                                            Répondre
+                                                        </a>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                        <div id="form-send-response" class="comments-form">
+                            <h2 class="title">Répondre</h2>
+                            {% if app.user or form is not null %}
+                                {{ form(form, {'id' : 'comment-form'}) }}
+                            {% else %}
+                                <p>Vous devez vous connecter pour participer à la conversation</p>
+                            {% endif %}
+                        </div>
+                        {{ knp_pagination_render(objects) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

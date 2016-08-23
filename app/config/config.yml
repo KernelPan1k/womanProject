@@ -1,0 +1,196 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+    - { resource: "@ProjectFrontBundle/Resources/config/services.yml" }
+    - { resource: "@ProjectFrontBundle/Resources/config/forms.yml" }
+    - { resource: "@ProjectFrontBundle/Resources/config/voter.yml" }
+    - { resource: "@ProjectBackBundle/Resources/config/admin.yml" }
+    - { resource: "@ApplicationUserBundle/Resources/config/services.yml" }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: fr
+
+framework:
+    #esi:             ~
+    translator:      { fallbacks: ["%locale%"] }
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    #serializer:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+    default_locale:  "%locale%"
+    trusted_hosts:   ~
+    trusted_proxies: ~
+    session:
+        # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
+        handler_id:  session.handler.native_file
+        save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
+    fragments:       ~
+    http_method_override: true
+    assets: ~
+
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+    form_themes:
+        - bootstrap_3_layout.html.twig
+        - ProjectFrontBundle:Form:select2_type.html.twig
+        - ProjectFrontBundle:Form:ajax_choice.html.twig
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   pdo_mysql
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+        charset:  UTF8
+        # if using pdo_sqlite as your database driver:
+        #   1. add the path in parameters.yml
+        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
+        #   2. Uncomment database_path in parameters.yml.dist
+        #   3. Uncomment next line:
+        #     path:     "%database_path%"
+
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+        dql:
+            numeric_functions:
+                Rand: Project\FrontBundle\DQL\RandFunction
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    spool:     { type: memory }
+
+knp_paginator:
+    page_range: 5
+    default_options:
+        page_name: page
+        sort_field_name: sort
+        sort_direction_name: direction
+        distinct: true
+    template:
+        pagination: ProjectFrontBundle:Default:pagination_multi.html.twig
+
+stof_doctrine_extensions:
+    orm:
+        default:
+            sluggable: true
+            timestampable: true
+
+liip_imagine:
+    resolvers:
+       default:
+          web_path: ~
+    filter_sets:
+        cache: ~
+        small:
+            quality: 75
+            filters:
+                thumbnail: { size: [60, 40], mode: outbound }
+        taken:
+            quality: 75
+            filters:
+                thumbnail: { size: [150, 100], mode: outbound }
+        medium:
+            quality: 75
+            filters:
+                thumbnail: { size: [330, 330], mode: outbound }
+        background:
+            quality: 75
+            filters:
+                thumbnail: { size: [1877, 220], mode: outbound }
+        news:
+            quality: 75
+            filters:
+                 thumbnail: { size: [250, 160], mode: outbound }
+        news_big:
+            quality: 75
+            filters:
+                 thumbnail: { size: [750, 750], mode: outbound }
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Application\UserBundle\Entity\User
+    use_listener:           true
+    use_flash_notifications: true
+    use_username_form_type: true
+    from_email:
+        address:  webmaster@entreamies.com
+        sender_name: webmaster
+    registration:
+        confirmation:
+            enabled:    false
+            template:   FOSUserBundle:Registration:email.txt.twig
+        form:
+            type: Application\UserBundle\Form\RegistrationType
+    profile:
+        form:
+            type: Application\UserBundle\Form\ProfileType
+    change_password:
+        form:
+            type: FOS\UserBundle\Form\Type\ChangePasswordFormType
+            name: entreamies_change_password_form
+    resetting:
+        token_ttl: 86400
+        email:
+            template:  FOSUserBundle:Resetting:email.txt.twig
+        form:
+            type:  FOS\UserBundle\Form\Type\ResettingFormType
+            name:  entreamies_resetting_form
+    service:
+        mailer:  fos_user.mailer.default
+        email_canonicalizer:  fos_user.util.canonicalizer.default
+        username_canonicalizer: fos_user.util.canonicalizer.default
+        token_generator:  fos_user.util.token_generator.default
+        user_manager:     fos_user.user_manager.default
+
+ivory_ck_editor:
+    default_config: default
+    configs:
+        default:
+          toolbar: "toolbar_1"
+          language: %locale%
+          scayt_autoStartup: true
+          scayt_sLang: "fr_FR"
+          config.scayt_defLan:  "fr_FR"
+          wsc_lang: "fr_FR"
+        minimal:
+          toolbar: "minimal"
+          language: %locale%
+          scayt_autoStartup: true
+          scayt_sLang: "fr_FR"
+          config.scayt_defLan:  "fr_FR"
+          wsc_lang: "fr_FR"
+    toolbars:
+        configs:
+            toolbar_1: [ "@basicstyles" , "-" , "@styles" , "-", "@clipboard", "@editing" , "@paragraph" , "@links" , "@items" , "@tools"]
+            minimal: ["@basicstyles","-","@editing" ,"-","@tools"]
+        items:
+            document: [ 'Source' ]
+            basicstyles: [ 'Bold','Italic','Underline','Strike','-','RemoveFormat' ] # 'Strike','Subscript','Superscript'
+            clipboard: [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ]
+            editing: [ 'Find','Replace','-','SelectAll','-','SpellChecker', 'Scayt' ]
+            paragraph: [ 'NumberedList','BulletedList','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock' ] # 'BidiLtr','BidiRtl' 'CreateDiv','Outdent','Indent','-','Blockquote', '-',
+            links: [ 'Link','Unlink','Anchor' ]
+            items: [ 'Image','Table'] # 'Flash','Table','HorizontalRule','Smiley','SpecialChar','Iframe''PageBreak'
+            styles: [ '-','Styles','Format' ] # 'Font','FontSize''Subscript','Superscript',
+            tools: [ 'Maximize', 'ShowBlocks', "Source"] # ,'-','About'

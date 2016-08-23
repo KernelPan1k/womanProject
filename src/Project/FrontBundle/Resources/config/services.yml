@@ -1,0 +1,20 @@
+services:
+    project.front_bundle.services.stopword:
+        class: Project\FrontBundle\Services\Stopword
+    project.front_bundle.services.radius:
+        class: Project\FrontBundle\Services\Radius
+        arguments:
+            - "@doctrine.orm.default_entity_manager"
+    project.front_bundle.services.network_search:
+        class: Project\FrontBundle\Services\NetworkSearch
+        arguments:
+            - "@doctrine.orm.default_entity_manager"
+            - "@project.front_bundle.services.stopword"
+            - "@project.front_bundle.services.radius"
+            - "@security.token_storage"
+    project.front_bundle.services.taken_search:
+        class: Project\FrontBundle\Services\TakenSearch
+        arguments:
+            - "@project.front_bundle.services.radius"
+            - "@security.token_storage"
+            - "@doctrine"

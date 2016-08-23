@@ -1,0 +1,425 @@
+{% extends "ProjectFrontBundle:Default:base.html.twig" %}
+{% block content %}
+    <div class="banner clearfix">
+        <div class="slideshow">
+            <div class="slider-revolution-5-container">
+                <div id="slider-banner-fullwidth" class="slider-banner-fullwidth rev_slider" data-version="5.0">
+                    <ul class="slides">
+                        <li data-transition="random" data-slotamount="default" data-masterspeed="default"
+                            data-title="Next Generation Template">
+                            <img src="{{ asset('bundles/projectfront/images/slider-1.jpg') }}"
+                                 alt="{# TODO #}"
+                                 data-bgposition="center top"
+                                 data-bgrepeat="no-repeat"
+                                 data-bgfit="cover"
+                                 class="rev-slidebg">
+                            <div class="tp-caption"
+                                 data-x="center"
+                                 data-y="center"
+                                 data-start="0"
+                                 data-transform_idle="o:1;"
+                                 data-transform_in="o:0;s:600;e:Power2.easeInOut;"
+                                 data-transform_out="o:0;s:600;"
+                                 data-width="5000"
+                                 data-height="5000">
+                            </div>
+                            <div class="tp-caption text-center large_white"
+                                 data-x="center"
+                                 data-y="50"
+                                 data-start="1000"
+                                 data-width="650"
+                                 data-transform_idle="o:1;"
+                                 data-transform_in="y:[100%];sX:1;sY:1;o:0;s:2150;e:Power4.easeInOut;"
+                                 data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;"
+                                 data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
+                                 data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;">
+                                <span class="logo-font">The <span class="text-default">Project</span></span><br>Next
+                                Generation Template
+                            </div>
+                            <div class="tp-caption large_white text-center tp-resizeme hidden-xs"
+                                 data-x="center"
+                                 data-y="150"
+                                 data-start="1300"
+                                 data-width="500"
+                                 data-transform_idle="o:1;"
+                                 data-transform_in="o:0;s:2000;e:Power4.easeInOut;">
+                                <div class="separator light"></div>
+                            </div>
+                            <div class="tp-caption medium_white text-center hidden-xs"
+                                 data-x="center"
+                                 data-y="190"
+                                 data-start="1300"
+                                 data-width="750"
+                                 data-transform_idle="o:1;"
+                                 data-transform_in="y:[100%];sX:1;sY:1;s:1700;e:Power4.easeInOut;"
+                                 data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;"
+                                 data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                                 data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;">Lorem ipsum dolor sit amet,
+                                consectetur adipisicing elit. <br> Nesciunt, maiores, aliquid. Repellat eum numquam
+                                aliquid culpa offici, <br> tenetur fugiat dolorum sapiente eligendi...
+                            </div>
+                            <div class="tp-caption small_white text-center"
+                                 data-x="center"
+                                 data-y="310"
+                                 data-start="1600"
+                                 data-width="650"
+                                 data-transform_idle="o:1;"
+                                 data-transform_in="y:[100%];sX:1;sY:1;s:1400;e:Power4.easeInOut;"
+                                 data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;"
+                                 data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
+                                 data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;">
+                                <a href="#" class="btn btn-dark btn-animated margin-clear">En savoir plus <i
+                                            class="fa fa-arrow-right"></i></a> <span class="pl-5 pr-5">or</span> <a
+                                        href="" class="btn btn-default btn-animated margin-clear">Contact
+                                    Us <i class="fa fa-envelope"></i></a>
+                            </div>
+
+                        </li>
+                        <li data-transition="random" data-slotamount="default" data-masterspeed="default"
+                            data-title="Premium Bootstrap Template">
+
+                            <!-- main image -->
+                            <img src="{{ asset('bundles/projectfront/images/slider-2.jpg') }}"
+                                 alt="{# TODO #}"
+                                 data-bgposition="center top"
+                                 data-bgrepeat="no-repeat"
+                                 data-bgfit="cover"
+                                 class="rev-slidebg">
+                            <div class="tp-caption"
+                                 data-x="center"
+                                 data-y="center"
+                                 data-start="0"
+                                 data-transform_idle="o:1;"
+                                 data-transform_in="o:0;s:600;e:Power2.easeInOut;"
+                                 data-transform_out="o:0;s:600;"
+                                 data-width="5000"
+                                 data-height="5000">
+                            </div>
+                            <div class="tp-caption text-center large_white"
+                                 data-x="center"
+                                 data-y="50"
+                                 data-start="1000"
+                                 data-width="650"
+                                 data-transform_idle="o:1;"
+                                 data-transform_in="y:[100%];sX:1;sY:1;o:0;s:2150;e:Power4.easeInOut;"
+                                 data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;"
+                                 data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
+                                 data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;">
+                                <span class="logo-font">The <span class="text-default">Project</span></span> <br>
+                                Premium Bootstrap Template
+                            </div>
+                            <div class="tp-caption text-center large_white tp-resizeme hidden-xs"
+                                 data-x="center"
+                                 data-y="150"
+                                 data-start="1300"
+                                 data-width="500"
+                                 data-transform_idle="o:1;"
+                                 data-transform_in="o:0;s:2000;e:Power4.easeInOut;">
+                                <div class="separator light"></div>
+                            </div>
+                            <div class="tp-caption text-center medium_white hidden-xs"
+                                 data-x="center"
+                                 data-y="190"
+                                 data-start="1300"
+                                 data-width="750"
+                                 data-transform_idle="o:1;"
+                                 data-transform_in="y:[100%];sX:1;sY:1;s:1700;e:Power4.easeInOut;"
+                                 data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;"
+                                 data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                                 data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;">Lorem ipsum dolor sit amet,
+                                consectetur adipisicing elit. <br> Nesciunt, maiores, aliquid. Repellat eum numquam
+                                aliquid culpa offici, <br> tenetur fugiat dolorum sapiente eligendi...
+                            </div>
+                            <div class="tp-caption text-center small_white text-center"
+                                 data-x="center"
+                                 data-y="310"
+                                 data-start="1600"
+                                 data-width="650"
+                                 data-transform_idle="o:1;"
+                                 data-transform_in="y:[100%];sX:1;sY:1;s:1400;e:Power4.easeInOut;"
+                                 data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;"
+                                 data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
+                                 data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;">
+                                <a href="#" class="btn btn-dark btn-animated margin-clear">En savoir plus <i
+                                            class="fa fa-arrow-right"></i></a> <span class="pl-5 pr-5">or</span> <a
+                                        href="#" class="btn btn-default btn-animated margin-clear">Contact
+                                    Us <i class="fa fa-envelope"></i></a>
+                            </div>
+
+                        </li>
+                    </ul>
+                    <div class="tp-bannertimer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="page-start"></div>
+    <section class="light-gray-bg pv-30 clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2 class="text-center">Enfin un site pour nous !</h2>
+                    <div class="separator"></div>
+                    <p class="large text-center">Entreamies, c’est un lieu pour nous les filles ! Un lieu pour nous
+                        rencontrer et prendre le thé. Un site sans lourdauds qui nous sollicitent et nous cassent les
+                        pieds (bouton pour les jeter du site :....). Un site pour papoter tranquilles avec nos copines
+                        ou en trouver de nouvelles qui apprécient les mêmes choses que nous et habitent le coin. Et
+                        c’est surtout un site qui vous respecte !
+                    </p>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="ph-20 feature-box text-center object-non-visible"
+                         data-animation-effect="fadeInDownSmall" data-effect-delay="100">
+                        <span class="icon large circle"><img class="img-circle" alt="{# TODO #}"
+                                                             src="{{ asset('bundles/projectfront/images/avantage-1.jpg') }}"/></span>
+                        <h3>Amies</h3>
+                        <div class="separator clearfix"></div>
+                        <p class="text-muted">
+                            Dans cette rubrique, vous pourrez rechercher les amies que vous avez déjà ou vous en faire
+                            de nouvelles.
+                        </p>
+                        <a href="">En savoir plus<i class="pl-5 fa fa-angle-double-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="ph-20 feature-box text-center object-non-visible"
+                         data-animation-effect="fadeInDownSmall" data-effect-delay="100">
+                        <span class="icon large circle"><img class="img-circle" alt="{# TODO #}"
+                                                             src="{{ asset('bundles/projectfront/images/avantage-4.jpg') }}"></span>
+                        <h3>Blog</h3>
+                        <div class="separator clearfix"></div>
+                        <p class="text-muted">Ici, c’est votre blog. Vous choisissez qui y aura accès et ce que vous y
+                            laissez. Votre coin perso à ne partager qu’aux copines quoi !
+                        </p>
+                        <a class="link-dark" href="">En savoir plus<i
+                                    class="pl-5 fa fa-angle-double-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="ph-20 feature-box text-center object-non-visible"
+                         data-animation-effect="fadeInDownSmall" data-effect-delay="200">
+                        <span class="icon large circle"><img class="img-circle" alt="{# TODO #}"
+                                                             src="{{ asset('bundles/projectfront/images/avantage-2.jpg') }}"></span>
+                        <h3>Sorties</h3>
+                        <div class="separator clearfix"></div>
+                        <p class="text-muted">Si vous souhaitez organiser ou vous joindre à des sorties communautaires,
+                            des sorties en groupe dans votre région, profitez de cet espace ;)
+                        </p>
+                        <a class="link-dark" href="">En savoir plus<i
+                                    class="pl-5 fa fa-angle-double-right"></i></a>
+                    </div>
+                </div>
+                <div class="clearfix visible-md"></div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="ph-20 feature-box text-center object-non-visible"
+                         data-animation-effect="fadeInDownSmall" data-effect-delay="200">
+                        <span class="icon large circle"><img class="img-circle" alt="{# TODO #}"
+                                                             src="{{ asset('bundles/projectfront/images/avantage-5.jpg') }}"></span>
+                        <h3>Papotages</h3>
+                        <div class="separator clearfix"></div>
+                        <p class="text-muted">Il s’agit de forums de discussions. Mais vous savez bien ce que c’est !
+                            Si vous vous posez des questions et aimeriez que les copines d’Entreamies vous conseillent
+                            ou que vous avez découvert une astuce sympa à partager avec toutes, ce coin est pour vous !
+                        </p>
+                        <a href="">En savoir plus<i class="pl-5 fa fa-angle-double-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="ph-20 feature-box text-center object-non-visible"
+                         data-animation-effect="fadeInDownSmall" data-effect-delay="300">
+                        <span class="icon large circle"><img class="img-circle" alt="{# TODO #}"
+                                                             src="{{ asset('bundles/projectfront/images/avantage-3.jpg') }}"></span>
+                        <h3>Articles</h3>
+                        <div class="separator clearfix"></div>
+                        <p class="text-muted">Régulièrement, nous sélectionnerons des articles (si vous voulez mettre en
+                            valeur des choses qui vous touchent) que nous afficheront pour toutes. A vos idées les girls
+                            !
+                        </p>
+                        <a href="">En savoir plus<i class="pl-5 fa fa-angle-double-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section default-bg clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="call-to-action text-center">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <h1 class="title">Rejoignez-nous</h1>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quasi explicabo
+                                    consequatur consectetur, a atque voluptate officiis eligendi nostrum.</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <br>
+                                <p>
+                                    <a href="{{ path('fos_user_registration_register') }}"
+                                       class="btn btn-lg btn-white btn-animated">
+                                        S'inscrire<i class="fa fa-arrow-right pl-20"></i>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="full-width-section">
+        <div class="full-image border-clear light-gray-bg">
+            <img class="to-right-block" src="{{ asset('bundles/projectfront/images/home-section-1.jpg') }}"
+                 alt="{# TODO #}">
+        </div>
+        <div class="full-text-container border-clear light-gray-bg">
+            <h3 class="logo-font text-muted"><span class="text-default">Un site qui respecte vos </span>données et votre
+                intimité</h3>
+            <div class="separator-2 visible-lg"></div>
+            <p>Entreamies s’engage à ne pas donner vos informations personnelles, vos publications, vos discussions à
+                qui que ce soit. Si vous vous désinscrivez, rien ne sera conservé. C’est vous seule qui choisissez ce
+                qui peut être vu et par qui. Entreamies est aussi votre ami !
+            </p>
+            <div class="separator-3 visible-lg"></div>
+        </div>
+    </section>
+    <section class="section default-bg clearfix" id="dishes"></section>
+    <section class="section clearfix">
+        <div class="container">
+            <h2 class="logo-font text-center text-muted">Featured Dishes</h2>
+            <div class="separator"></div>
+            <p class="lead text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam tempore <br>
+                molestiae cum, id ab consectetur aperiam recusandae fugit, quis, possimus eum.</p>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="image-box text-center style-2 mb-20">
+                        <img class="img-circle img-thumbnail" alt="{# TODO #}"
+                             src="{{ asset('bundles/projectfront/images/home-circle-1.jpg') }}">
+                        <div class="body padding-horizontal-clear">
+                            <h4 class="logo-font title">Explicabo sed sequi recusandae</h4>
+                            <p class="small mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                Aliquam atque ipsam nihil, adipisci rem minus.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="image-box text-center style-2 mb-20">
+                        <img class="img-circle img-thumbnail" alt="{# TODO #}"
+                             src="{{ asset('bundles/projectfront/images/home-circle-2.jpg') }}">
+                        <div class="body padding-horizontal-clear">
+                            <h4 class="logo-font title">Aliquam atque ipsam nihil</h4>
+                            <p class="small mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                Aliquam atque ipsam nihil, adipisci rem minus.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="image-box text-center style-2 mb-20">
+                        <img class="img-circle img-thumbnail" alt="{# TODO #}"
+                             src="{{ asset('bundles/projectfront/images/home-circle-3.jpg') }}">
+                        <div class="body padding-horizontal-clear">
+                            <h4 class="logo-font title">Nihil adipisci rem minus</h4>
+                            <p class="small mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                Aliquam atque ipsam nihil, adipisci rem minus.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="image-box text-center style-2 mb-20">
+                        <img class="img-circle img-thumbnail" alt="{# TODO #}"
+                             src="{{ asset('bundles/projectfront/images/home-circle-4.jpg') }}">
+                        <div class="body padding-horizontal-clear">
+                            <h4 class="logo-font title">Adipisicing elit aliquam atque</h4>
+                            <p class="small mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                Aliquam atque ipsam nihil, adipisci rem minus.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section blue-bg clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2 class="text-center logo-font title">Ils parlent de nous</h2>
+                    <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut laborum eaque
+                        consequuntur in et corporis ipsam, temporibus iure eum impedit distinctio reprehenderit enim
+                        mollitia corrupti. Tenetur deleniti modi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="parallax background-img-10 pv-40" style="background-position: 50% 50%;">
+        <div class="owl-carousel content-slider">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="testimonial text-center">
+                            <div class="testimonial-image">
+                                <img src="{{ asset('bundles/projectfront/images/testimonial-1.jpg') }}"
+                                     alt="{# TODO #}"
+                                     class="img-circle">
+                            </div>
+                            <h3>Just Perfect!</h3>
+                            <div class="separator"></div>
+                            <div class="testimonial-body">
+                                <blockquote>
+                                    <p>Sed ut perspiciatis unde omnis iste natu error sit voluptatem accusan tium dolore
+                                        laud antium, totam rem dolor sit amet tristique pulvinar, turpis arcu rutrum
+                                        nunc, ac laoreet turpis augue a justo.</p>
+                                </blockquote>
+                                <div class="testimonial-info-1">- Jane Doe</div>
+                                <div class="testimonial-info-2">By Company</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="testimonial text-center">
+                            <div class="testimonial-image">
+                                <img src="{{ asset('bundles/projectfront/images/testimonial-2.jpg') }}"
+                                     alt="{# TODO #}"
+                                     class="img-circle">
+                            </div>
+                            <h3>Amazing!</h3>
+                            <div class="separator"></div>
+                            <div class="testimonial-body">
+                                <blockquote>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et cupiditate deleniti
+                                        ratione in. Expedita nemo, quisquam, fuga adipisci omnis ad mollitia libero
+                                        culpa nostrum est quia eos esse vel!</p>
+                                </blockquote>
+                                <div class="testimonial-info-1">- Jane Doe</div>
+                                <div class="testimonial-info-2">By Company</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="default-bg footer-top border-clear">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="call-to-action text-center">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <h2 class="custom-text-black">Inscription en 2 minutes</h2>
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="mt-10"><a href="#"
+                                                    class="btn btn-animated btn-lg btn-gray-transparent custom-text-black ">Inscription<i
+                                                class="fa fa-cart-arrow-down pl-20"></i></a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

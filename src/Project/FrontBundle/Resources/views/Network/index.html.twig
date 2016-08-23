@@ -1,0 +1,214 @@
+{% extends 'ProjectFrontBundle:Default:base.html.twig' %}
+{% block breadcrump %}
+    <div class="breadcrumb-container">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><i class="fa fa-home pr-10"></i><a href="{{ path('project_front_index_index') }}">Accueil</a></li>
+                <li class="active">Réseaux</li>
+            </ol>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    <div class="light-gray-bg section">
+        <div class="container">
+            <div class="sorting-filters text-center mb-20">
+                {{ form_start(form, {'attr' : {'class' : 'form-inline form-search-network', 'data-pagination-form' : 'form-search-network' }}) }}
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="form-group col-sm-2">
+                                {{ form_label(form.categorys) }}
+                                {{ form_widget(form.categorys) }}
+                            </div>
+                            <div class="form-group col-sm-1">
+                                {{ form_label(form.ageMin) }}
+                                {{ form_widget(form.ageMin) }}
+                            </div>
+                            <div class="form-group col-sm-1">
+                                {{ form_label(form.ageMax) }}
+                                {{ form_widget(form.ageMax) }}
+                            </div>
+                            <div class="form-group col-sm-1">
+                                {{ form_label(form.type) }}
+                                {{ form_widget(form.type) }}
+                            </div>
+                            <div class="form-group col-sm-3">
+                                {{ form_label(form.region) }}
+                                {{ form_widget(form.region) }}
+                            </div>
+                            <div class="form-group col-sm-3">
+                                {{ form_label(form.city) }}
+                                {{ form_widget(form.city) }}
+                            </div>
+                            <div class="form-group col-sm-1">
+                                {{ form_label(form.distance) }}
+                                {{ form_widget(form.distance) }}
+                            </div>
+                            <div class="form-group col-sm-3">
+                                {{ form_label(form.search) }}
+                                {{ form_widget(form.search) }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                {{ form_label(form.send) }}
+                                {{ form_widget(form.send) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+    <section class="section light-gray-bg clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="clear-style">
+                        {% include 'ProjectFrontBundle:Network:include-network-index-list.html.twig' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% if app.user
+    and is_granted('ROLE_USER')
+    and app.user.isProfilComplete
+    and (userByCategorys is not null or userByCity is not null or userByOld is not null) %}
+        <section class="section default-bg ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="call-to-action text-center">
+                            <div class="row">
+                                <h1 class="title">Voici d'autres femmes avec des critères vous ressemblant</h1>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quasi explicabo
+                                    consequatur consectetur, a atque voluptate officiis eligendi nostrum.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="pv-30 clearfix">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="block clearfix">
+                            <h3 class="title">Votre ville</h3>
+                            <div class="separator-2"></div>
+                            {% for uCity in userByCity %}
+                                <div class="media margin-clear">
+                                    <div class="media-left">
+                                        <div class="overlay-container">
+                                            {% set avatar =
+                                            (uCity.img is not null)
+                                            ? (uCity.getAvatarPath()|imagine_filter('small'))
+                                            : asset('bundles/projectfront/images/avatar-small.jpg') %}
+                                            <img class="media-object mauto"
+                                                 src="{{ avatar }}"
+                                                 alt="">
+                                            <a href="{# TODO #}" class="overlay-link"><i
+                                                        class="fa fa-link"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="media-body img-small">
+                                        <h6 class="media-heading"><a href="{# TODO #}">{{ uCity.username }}</a></h6>
+                                        <p class="margin-clear">
+                                            {{ uCity.city.name }}
+                                        </p>
+                                    </div>
+                                    <hr>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="block clearfix">
+                            <h3 class="title">Vos interets</h3>
+                            <div class="separator-2"></div>
+                            {% for uCategorys in userByCategorys %}
+                                <div class="media margin-clear">
+                                    <div class="media-left">
+                                        <div class="overlay-container">
+                                            {% set avatar =
+                                            (uCategorys.img is not null)
+                                            ? (uCategorys.getAvatarPath()|imagine_filter('small'))
+                                            : asset('bundles/projectfront/images/avatar-small.jpg') %}
+                                            <img class="media-object mauto"
+                                                 src="{{ avatar }}"
+                                                 alt="">
+                                            <a href="{# TODO #}" class="overlay-link"><i
+                                                        class="fa fa-link"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="media-body img-small">
+                                        <h6 class="media-heading"><a href="{# TODO #}">{{ uCategorys.username }}</a>
+                                        </h6>
+                                        <p class="margin-clear">
+                                            {{ uCategorys.city.name }}
+                                        </p>
+                                    </div>
+                                    <hr>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="block clearfix">
+                            <h3 class="title">Votre age</h3>
+                            <div class="separator-2"></div>
+                            {% for uOld in userByOld %}
+                                <div class="media margin-clear">
+                                    <div class="media-left">
+                                        <div class="overlay-container">
+                                            {% set avatar =
+                                            (uOld.img is not null)
+                                            ? (uOld.getAvatarPath()|imagine_filter('small'))
+                                            : asset('bundles/projectfront/images/avatar-small.jpg') %}
+                                            <img class="media-object mauto"
+                                                 src="{{ avatar }}"
+                                                 alt="">
+                                            <a href="{# TODO #}" class="overlay-link"><i
+                                                        class="fa fa-link"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="media-body img-small">
+                                        <h6 class="media-heading"><a href="{# TODO #}">{{ uOld.username }}</a></h6>
+                                        <p class="margin-clear">
+                                            {{ uOld.city.name }}
+                                        </p>
+                                    </div>
+                                    <hr>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+    <div class="blue-bg   footer-top animated-text">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="call-to-action text-center">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <h2>Inviter des amis</h2>
+                                <h2>Waste no more time</h2>
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="mt-10"><a href="{# TODO #}"
+                                                    class="btn btn-animated btn-lg btn-gray-transparent ">Voir<i
+                                                class="fa fa-cart-arrow-down pl-20"></i></a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+services:
+    project.front_bundle.voter.forum_post_voter:
+        class: Project\FrontBundle\Voter\ForumPostVoter
+        arguments:
+              - "@security.access.role_hierarchy_voter"
+              - "@security.token_storage"
+        tags:
+            - {name: security.voter}
+    project.front_bundle.voter.taken_voter:
+        class: Project\FrontBundle\Voter\TakenVoter
+        arguments:
+              - "@security.access.role_hierarchy_voter"
+              - "@security.token_storage"
+        tags:
+            - {name: security.voter}

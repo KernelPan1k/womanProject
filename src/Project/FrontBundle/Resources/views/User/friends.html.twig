@@ -1,0 +1,354 @@
+{% extends 'ProjectFrontBundle:Default:base.html.twig' %}
+{% block breadcrump %}
+    <div class="breadcrumb-container" xmlns="http://www.w3.org/1999/html">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><i class="fa fa-home pr-10"></i><a href="{{ path('project_front_index_index') }}">Accueil</a></li>
+                <li><i class="fa fa-home pr-10"></i><a href="{{ path('project_front_user_display') }}">Utilisateur</a>
+                </li>
+                <li class="active">Amies</li>
+            </ol>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <section class="main-container padding-bottom-clear">
+        <div class="container">
+            <div class="row">
+                <div class="main col-md-12">
+                    <h1 class="page-title">Mes amies</h1>
+                    <div class="separator-2"></div>
+                    <div class="row grid-space-20">
+                        <div class="col-md-2 col-sm-3">
+                            <div class="image-box team-member shadow mb-20">
+                                <a href="{{ path('project_front_user_display') }}">
+                                    <div class="overlay-container overlay-visible">
+                                        <img src="{{ asset('bundles/projectfront/img/home-circle-3.jpg') }}"
+                                             alt="{# TODO #}">
+                                        <div class="overlay-bottom">
+                                            <div class="text">
+                                                <h3 class="title">Jane Doe</h3>
+                                                <div class="separator light"></div>
+                                                <p class="small margin-clear"><em>CTO <br> Lorem ipsum dolor sit</em>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-3">
+                            <div class="image-box team-member shadow mb-20">
+                                <a href="{{ path('project_front_user_display') }}">
+                                    <div class="overlay-container overlay-visible">
+                                        <img src="{{ asset('bundles/projectfront/img/home-circle-1.jpg') }}"
+                                             alt="{# TODO #}">
+                                        <div class="overlay-bottom">
+                                            <div class="text">
+                                                <h3 class="title">Jane Doe</h3>
+                                                <div class="separator light"></div>
+                                                <p class="small margin-clear"><em>CTO <br> Lorem ipsum dolor sit</em>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-3">
+                            <div class="image-box team-member shadow mb-20">
+                                <a href="{{ path('project_front_user_display') }}">
+                                    <div class="overlay-container overlay-visible">
+                                        <img src="{{ asset('bundles/projectfront/img/home-circle-2.jpg') }}"
+                                             alt="{# TODO #}">
+                                        <div class="overlay-bottom">
+                                            <div class="text">
+                                                <h3 class="title">Jane Doe</h3>
+                                                <div class="separator light"></div>
+                                                <p class="small margin-clear"><em>CTO <br> Lorem ipsum dolor sit</em>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-3">
+                            <div class="image-box team-member shadow mb-20">
+                                <a href="{{ path('project_front_user_display') }}">
+                                    <div class="overlay-container overlay-visible">
+                                        <img src="{{ asset('bundles/projectfront/img/home-circle-1.jpg') }}"
+                                             alt="{# TODO #}">
+                                        <div class="overlay-bottom">
+                                            <div class="text">
+                                                <h3 class="title">Jane Doe</h3>
+                                                <div class="separator light"></div>
+                                                <p class="small margin-clear"><em>CTO <br> Lorem ipsum dolor sit</em>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-3">
+                            <div class="image-box team-member shadow mb-20">
+                                <a href="{{ path('project_front_user_display') }}">
+                                    <div class="overlay-container overlay-visible">
+                                        <img src="{{ asset('bundles/projectfront/img/home-circle-3.jpg') }}"
+                                             alt="{# TODO #}">
+                                        <div class="overlay-bottom">
+                                            <div class="text">
+                                                <h3 class="title">Jane Doe</h3>
+                                                <div class="separator light"></div>
+                                                <p class="small margin-clear"><em>CTO <br> Lorem ipsum dolor sit</em>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-3">
+                            <div class="image-box team-member shadow mb-20">
+                                <a href="{{ path('project_front_user_display') }}">
+                                    <div class="overlay-container overlay-visible">
+                                        <img src="{{ asset('bundles/projectfront/img/home-circle-3.jpg') }}"
+                                             alt="{# TODO #}">
+                                        <div class="overlay-bottom">
+                                            <div class="text">
+                                                <h3 class="title">Jane Doe</h3>
+                                                <div class="separator light"></div>
+                                                <p class="small margin-clear"><em>CTO <br> Lorem ipsum dolor sit</em>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-3">
+                            <div class="image-box team-member shadow mb-20">
+                                <a href="{{ path('project_front_user_display') }}">
+                                    <div class="overlay-container overlay-visible">
+                                        <img src="{{ asset('bundles/projectfront/img/home-circle-2.jpg') }}"
+                                             alt="{# TODO #}">
+                                        <div class="overlay-bottom">
+                                            <div class="text">
+                                                <h3 class="title">Jane Doe</h3>
+                                                <div class="separator light"></div>
+                                                <p class="small margin-clear"><em>CTO <br> Lorem ipsum dolor sit</em>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-3">
+                            <div class="image-box team-member shadow mb-20">
+                                <a href="{{ path('project_front_user_display') }}">
+                                    <div class="overlay-container overlay-visible">
+                                        <img src="{{ asset('bundles/projectfront/img/home-circle-1.jpg') }}"
+                                             alt="{# TODO #}">
+                                        <div class="overlay-bottom">
+                                            <div class="text">
+                                                <h3 class="title">Jane Doe</h3>
+                                                <div class="separator light"></div>
+                                                <p class="small margin-clear"><em>CTO <br> Lorem ipsum dolor sit</em>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-3">
+                            <div class="image-box team-member shadow mb-20">
+                                <a href="{{ path('project_front_user_display') }}">
+                                    <div class="overlay-container overlay-visible">
+                                        <img src="{{ asset('bundles/projectfront/img/home-circle-3.jpg') }}"
+                                             alt="{# TODO #}">
+                                        <div class="overlay-bottom">
+                                            <div class="text">
+                                                <h3 class="title">Jane Doe</h3>
+                                                <div class="separator light"></div>
+                                                <p class="small margin-clear"><em>CTO <br> Lorem ipsum dolor sit</em>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-3">
+                            <div class="image-box team-member shadow mb-20">
+                                <a href="{{ path('project_front_user_display') }}">
+                                    <div class="overlay-container overlay-visible">
+                                        <img src="{{ asset('bundles/projectfront/img/home-circle-3.jpg') }}"
+                                             alt="{# TODO #}">
+                                        <div class="overlay-bottom">
+                                            <div class="text">
+                                                <h3 class="title">Jane Doe</h3>
+                                                <div class="separator light"></div>
+                                                <p class="small margin-clear"><em>CTO <br> Lorem ipsum dolor sit</em>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-3">
+                            <div class="image-box team-member shadow mb-20">
+                                <a href="{{ path('project_front_user_display') }}">
+                                    <div class="overlay-container overlay-visible">
+                                        <img src="{{ asset('bundles/projectfront/img/home-circle-1.jpg') }}"
+                                             alt="{# TODO #}">
+                                        <div class="overlay-bottom">
+                                            <div class="text">
+                                                <h3 class="title">Jane Doe</h3>
+                                                <div class="separator light"></div>
+                                                <p class="small margin-clear"><em>CTO <br> Lorem ipsum dolor sit</em>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-3">
+                            <div class="image-box team-member shadow mb-20">
+                                <a href="{{ path('project_front_user_display') }}">
+                                    <div class="overlay-container overlay-visible">
+                                        <img src="{{ asset('bundles/projectfront/img/home-circle-3.jpg') }}"
+                                             alt="{# TODO #}">
+                                        <div class="overlay-bottom">
+                                            <div class="text">
+                                                <h3 class="title">Jane Doe</h3>
+                                                <div class="separator light"></div>
+                                                <p class="small margin-clear"><em>CTO <br> Lorem ipsum dolor sit</em>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-3">
+                            <div class="image-box team-member shadow mb-20">
+                                <a href="{{ path('project_front_user_display') }}">
+                                    <div class="overlay-container overlay-visible">
+                                        <img src="{{ asset('bundles/projectfront/img/home-circle-2.jpg') }}"
+                                             alt="{# TODO #}">
+                                        <div class="overlay-bottom">
+                                            <div class="text">
+                                                <h3 class="title">Jane Doe</h3>
+                                                <div class="separator light"></div>
+                                                <p class="small margin-clear"><em>CTO <br> Lorem ipsum dolor sit</em>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-3">
+                            <div class="image-box team-member shadow mb-20">
+                                <a href="{{ path('project_front_user_display') }}">
+                                    <div class="overlay-container overlay-visible">
+                                        <img src="{{ asset('bundles/projectfront/img/home-circle-1.jpg') }}"
+                                             alt="{# TODO #}">
+                                        <div class="overlay-bottom">
+                                            <div class="text">
+                                                <h3 class="title">Jane Doe</h3>
+                                                <div class="separator light"></div>
+                                                <p class="small margin-clear"><em>CTO <br> Lorem ipsum dolor sit</em>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-3">
+                            <div class="image-box team-member shadow mb-20">
+                                <a href="{{ path('project_front_user_display') }}">
+                                    <div class="overlay-container overlay-visible">
+                                        <img src="{{ asset('bundles/projectfront/img/home-circle-1.jpg') }}"
+                                             alt="{# TODO #}">
+                                        <div class="overlay-bottom">
+                                            <div class="text">
+                                                <h3 class="title">Jane Doe</h3>
+                                                <div class="separator light"></div>
+                                                <p class="small margin-clear"><em>CTO <br> Lorem ipsum dolor sit</em>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-3">
+                            <div class="image-box team-member shadow mb-20">
+                                <a href="{{ path('project_front_user_display') }}">
+                                    <div class="overlay-container overlay-visible">
+                                        <img src="{{ asset('bundles/projectfront/img/home-circle-3.jpg') }}"
+                                             alt="{# TODO #}">
+                                        <div class="overlay-bottom">
+                                            <div class="text">
+                                                <h3 class="title">Jane Doe</h3>
+                                                <div class="separator light"></div>
+                                                <p class="small margin-clear"><em>CTO <br> Lorem ipsum dolor sit</em>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-3">
+                            <div class="image-box team-member shadow mb-20">
+                                <a href="{{ path('project_front_user_display') }}">
+                                    <div class="overlay-container overlay-visible">
+                                        <img src="{{ asset('bundles/projectfront/img/home-circle-2.jpg') }}"
+                                             alt="{# TODO #}">
+                                        <div class="overlay-bottom">
+                                            <div class="text">
+                                                <h3 class="title">Jane Doe</h3>
+                                                <div class="separator light"></div>
+                                                <p class="small margin-clear"><em>CTO <br> Lorem ipsum dolor sit</em>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="blue-bg  default-hovered footer-top animated-text">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="call-to-action text-center">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <h2>Powerful Bootstrap Template</h2>
+                                <h2>Waste no more time</h2>
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="mt-10"><a href="#" class="btn btn-animated btn-lg btn-gray-transparent ">Purchase<i
+                                                class="fa fa-cart-arrow-down pl-20"></i></a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

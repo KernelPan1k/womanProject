@@ -1,0 +1,32 @@
+services:
+    project.front_bundle.form.select2.ajax_choice_type:
+        class: Project\FrontBundle\Form\Select2\AjaxChoiceType
+        arguments:
+            - "@router"
+            - "@doctrine"
+        tags:
+            - { name: "form.type" }
+    project.front_bundle.form.network_type:
+        class: Project\FrontBundle\Form\NetworkType
+        arguments:
+            - "@security.token_storage"
+        tags:
+            - { name: "form.type" }
+    project.front_bundle.form.taken_search_type:
+        class: Project\FrontBundle\Form\TakenSearchType
+        arguments:
+            - "@security.token_storage"
+        tags:
+            - { name: "form.type" }
+    project.application_bundle.form.registration_type:
+        class: Application\UserBundle\Form\RegistrationType
+        arguments:
+            - "@translator"
+        tags:
+            - { name: "form.type" }
+    project.application_bundle.form.taken_type:
+        class: Project\FrontBundle\Form\TakenType
+        arguments:
+            - "@security.token_storage"
+        tags:
+            - { name: "form.type" }

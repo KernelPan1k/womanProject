@@ -1,0 +1,184 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block breadcrump %}
+    <div class="breadcrumb-container">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><i class="fa fa-home pr-10"></i><a class="link-dark" href="{{ path('project_front_index_index') }}">Accueil</a>
+                </li>
+                <li class="active">Profil</li>
+            </ol>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    {% set background =
+    (app.user.bigImg is not null)
+    ? (app.user.getBackgroundPath()|imagine_filter('background'))
+    : 'bundles/projectfront/images/page-about-me-banner.jpg' %}
+    <div class="banner default-translucent-bg overlay-container overlay-visible"
+         style="background-image:url({{ asset(background) }}); background-position:50% 0;">
+        {% if app.user.bigImg is null %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 text-center col-md-offset-2 pv-20">
+                        <h1 class="title object-non-visible" data-animation-effect="fadeIn" data-effect-delay="100">
+                            Choisissez une image de fonds
+                        </h1>
+                        <div class="separator object-non-visible mt-10" data-animation-effect="fadeIn"
+                             data-effect-delay="100"></div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        <a class="overlay-link" data-upload="background"><i class="icon-edit"></i></a>
+    </div>
+    <section class="main-container">
+        <div class="container">
+            <div class="row">
+                <div class="main col-md-12">
+                    <h1 class="page-title">{{ app.user.username }}</h1>
+                    <div class="separator-2"></div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="image-box team-member shadow mb-20">
+                                <div class="overlay-container overlay-visible">
+                                    {% set avatar =
+                                    (app.user.img is not null)
+                                    ? (app.user.getAvatarPath()|imagine_filter('medium'))
+                                    : asset('bundles/projectfront/images/avatar.jpg') %}
+                                    <img src="{{ avatar }}"
+                                         alt="avatar" class="mauto">
+                                    <a class="overlay-link" data-upload="avatar"><i class="icon-edit"></i></a>
+                                    <div class="overlay-bottom">
+                                        <div class="text">
+                                            <h3 class="title margin-clear">{{ app.user.username }}</h3>
+                                            <p class="margin-clear">{{ app.user.city.name|default }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="btn btn-animated btn-sm default-bg"
+                               href="{{ path('project_front_user_friends') }}">
+                                Liste d'amis<i class="pl-10 fa fa-user-secret"></i>
+                            </a>
+                            <a class="btn btn-animated btn-sm blue-bg" href="{{ path('project_front_user_post') }}">
+                                Mes actus<i class="pl-10 fa fa-angellist"></i>
+                            </a>
+                        </div>
+                        <div class="col-lg-4 col-sm-5">
+                            <div class="description-content">
+                                {% if app.user.description is not null and app.user.description is not empty %}
+                                    <p>
+                                        {{ app.user.description|nl2br }}
+                                    </p>
+                                {% else %}
+                                    <p>
+                                        Aucune description actuellement.
+                                    </p>
+                                {% endif %}
+                            </div>
+                            <div class="progress style-2 dark">
+                                <span class="text"></span>
+                                <div class="progress-bar progress-bar-white" role="progressbar"
+                                     data-animate-width="95%">
+                                    <span class="label object-non-visible" data-animation-effect="fadeInLeftSmall"
+                                          data-effect-delay="1000">Nombre d'amis</span>
+                                </div>
+                            </div>
+                            <div class="progress style-2 dark">
+                                <span class="text"></span>
+                                <div class="progress-bar progress-bar-white" role="progressbar"
+                                     data-animate-width="85%">
+                                    <span class="label object-non-visible" data-animation-effect="fadeInLeftSmall"
+                                          data-effect-delay="1000">Nombre de messages</span>
+                                </div>
+                            </div>
+                            <div class="progress style-2 dark">
+                                <span class="text"></span>
+                                <div class="progress-bar progress-bar-white" role="progressbar"
+                                     data-animate-width="95%">
+                                    <span class="label object-non-visible" data-animation-effect="fadeInLeftSmall"
+                                          data-effect-delay="1000">Nombre de sortie orgnisée</span>
+                                </div>
+                            </div>
+                            <div class="progress style-2 dark">
+                                <span class="text"></span>
+                                <div class="progress-bar progress-bar-white" role="progressbar"
+                                     data-animate-width="80%">
+                                    <span class="label object-non-visible" data-animation-effect="fadeInLeftSmall"
+                                          data-effect-delay="1000">Nombre de sortie réalisée</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-lg-offset-1">
+                            {% if mandatory|length>0 %}
+                                <div class="alert alert-danger">
+                                    <p>Pour profiter pleinement du site, vous devez renseigner les champs suivant :</p>
+                                    {% for m in mandatory %}
+                                        <p><a data-click-cascade="collapse">{{ m.message }}</a></p>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                <div class="alert alert-success">
+                                    <p>
+                                        Votre profil est correctement rempli.
+                                    </p>
+                                </div>
+                            {% endif %}
+                            <h3 class="title">Informations personnelle</h3>
+                            <ul class="list-icons">
+                                <li><i class="fa fa-calendar-o pr-10"></i>Inscris le
+                                    : {{ app.user.createdAt|date('d/m/Y') }}</li>
+                                <li><i class="fa fa-envelope-o pr-10"></i>Email : {{ app.user.email }}</li>
+                                <li><i class="fa fa-calendar-o pr-10"></i>Néé le
+                                    : {{ app.user.dateOfBirth|date('d/m/Y') }}</li>
+                            </ul>
+                            <h3>Centre d'interets</h3>
+                            <div class="separator-2"></div>
+                            <div class="tags-cloud">
+                                {% for category in app.user.categorys %}
+                                    <div class="tag">
+                                        <a href="">{{ category.name }}</a>
+                                    </div>
+                                {% else %}
+                                    <p>
+                                        Aucun centre d'interets actuellement
+                                    </p>
+                                {% endfor %}
+                            </div>
+                            <h3>Administration du compte</h3>
+                            <a class="btn btn-gray collapsed btn-animated col-md-12" aria-controls="collapseContent"
+                               aria-expanded="false" href="#collapseContent" data-toggle="collapse"
+                               data-click-target="collapse">
+                                Editer vos informations
+                                <i class="fa fa-pencil-square"></i>
+                            </a>
+                            <a class="btn blue-bg col-md-12" href="{{ path('fos_user_change_password') }}">
+                                Changer de mot de passe
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="collapseContent" class="collapse pv-20 light-gray-bg clearfix">
+        <div class="container">
+            <h3>Editer votre <strong>profil</strong></h3>
+            <div class="separator-2 mb-20"></div>
+            <div class="image-box style-3-b">
+                <div class="row">
+                    <div class="col-md-12">
+                        {{ render(controller('FOSUserBundle:Profile:edit')) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="blue-bg footer-top"></div>
+    <div class="hidden">
+        {{ render(controller('ApplicationUserBundle:User:avatar')) }}
+        {{ render(controller('ApplicationUserBundle:User:background')) }}
+    </div>
+{% endblock %}

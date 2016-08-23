@@ -1,0 +1,26 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+    application.user_bundle.form.registration_type:
+        class: Application\UserBundle\Form\RegistrationType
+        arguments:
+            - "@translator"
+        tags:
+            - { name: form.type, alias: entreamies_user_registration }
+    application.user_bundle.form.profile_type:
+        class: Application\UserBundle\Form\ProfileType
+        tags:
+            - { name: form.type, alias: entreamies_user_profile }
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }
+    twig.extension.date:
+        class: Twig_Extensions_Extension_Date
+        arguments:
+            - "@translator.default"
+        tags:
+            - { name: twig.extension }

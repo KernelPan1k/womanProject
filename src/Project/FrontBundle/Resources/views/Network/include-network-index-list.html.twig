@@ -1,0 +1,62 @@
+<div data-pagination-content="form-search-network">
+    {% for object in objects %}
+        <div class="col-md-4 mb-20" style="height: 400px;">
+            <div class="row grid-space-0">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="overlay-container">
+                        {% set avatar =
+                        (object.img is not null)
+                        ? (object.getAvatarPath()|imagine_filter('medium'))
+                        : asset('bundles/projectfront/images/avatar.jpg') %}
+                        <img style="display: block; margin: auto; height: 150px;"
+                             class="circle"
+                             src="{{ avatar }}"
+                             alt=""/>
+                        <a class="overlay-link"
+                           href="{{ path('application_userbundle_user_public_profil', { 'slug' : object.slug }) }}">
+                            <i class="fa fa-eye"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                    <div class="body">
+                        <h3 class="margin-clear">
+                            <a href="{# TODO #}">{{ object.username ~ ' - ' ~ object.city.name }}</a>
+                        </h3>
+                        <p data-toggle="tooltip" data-placement="top" title="{{ object.categorysToString() }}">
+                            {% for cat in object.categorys[:2] %}
+                                <span class="label default-bg">
+                                <i class="icon-heart pr-5"></i>
+                                    {{ cat.name }}
+                            </span>&nbsp;
+                            {% endfor %}
+                            {% if object.categorys|length>2 %}
+                                <span class="label default-bg">
+                                <i class="icon-heart pr-5"></i>
+                                    ...
+                                </span>
+                            {% endif %}
+                        </p>
+                        <p style="height: 115px;">
+                            {{ object.description|length > 200 ? object.description|nl2br|slice(0, 200) ~ '...' : object.description }}
+                        </p>
+                        <div class="elements-list clearfix">
+                            <a href="{{ path('application_userbundle_user_public_profil', { 'slug' : object.slug }) }}"
+                               class="pull-right btn btn-sm btn-default-transparent btn-animated">
+                                Voir le profil<i class="fa fa-eye"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <nav class="text-center" data-pagination-button="form-search-network">
+            {{ knp_pagination_render(objects) }}
+        </nav>
+    </div>
+</div>

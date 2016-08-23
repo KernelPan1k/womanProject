@@ -1,0 +1,23 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="row">
+    <div class="col-sm-6 col-sm-push-3">
+        <br>
+        <h2 class="title">Demander un nouveau mot de passe</h2>
+        <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="form-horizontal">
+            <div class="form-group">
+                {% if invalid_username is defined %}
+                    <p class="text text-danger">{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}) }}</p>
+                {% endif %}
+                <label class="col-sm-2 control-label" for="username">{{ 'resetting.request.username'|trans }}</label>
+                <div class="col-sm-10">
+                    <input type="text" id="username" name="username" required="required" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input class="btn btn-default" type="submit" value="{{ 'resetting.request.submit'|trans }}"/></div>
+            </div>
+        </form>
+    </div>
+</div>

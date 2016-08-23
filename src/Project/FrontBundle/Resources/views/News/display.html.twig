@@ -1,0 +1,387 @@
+{% extends 'ProjectFrontBundle:Default:base.html.twig' %}
+{% block breadcrump %}
+    <div class="breadcrumb-container">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><i class="fa fa-home pr-10"></i><a href="{{ path('project_front_index_index') }}">Accueil</a></li>
+                <li><i class="fa fa-home pr-10"></i><a href="{{ path('project_front_news_index') }}">Actualités</a></li>
+                <li class="active">Voir</li>
+            </ol>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    <section class="main-container">
+        <div class="container">
+            <div class="row">
+                <div class="main col-md-8">
+                    <h1 class="page-title">Actualités</h1>
+                    <article class="blogpost full">
+                        <header>
+                            <div class="post-info">
+										<span class="post-date">
+											<i class="icon-calendar"></i>
+											<span>Le {{ object.createdAt|localizeddate('full', 'none') }}</span>
+										</span>
+                                <span class="submitted">
+                                    <i class="icon-user-1"></i> par {{ object.author.username }}
+                                    dans {{ object.category.name }}</span>
+                                <span class="comments"><i class="icon-chat"></i>
+                                    {{ object.comments|length }} commentaires
+                                </span>
+                            </div>
+                        </header>
+                        <div class="blogpost-content">
+                            <div class="overlay-container">
+                                {% set img =
+                                object.img is not null
+                                ? object.imgPath|imagine_filter('news_big')
+                                : asset('bundles/projectfront/images/actu-1.jpg') %}
+                                <img class="img-news" src="{{ img }}"
+                                     alt="{{ object.alt|default('actualité') }}">
+                            </div>
+                            <br>
+                            <div>
+                                {{ object.content|raw }}
+                            </div>
+                        </div>
+                        <footer class="clearfix">
+                            <div class="link pull-right">
+                                <ul class="social-links circle small colored clearfix margin-clear text-right animated-effect-1">
+                                    <li class="twitter"><a target="_blank" href="http://www.twitter.com"><i
+                                                    class="fa fa-twitter"></i></a></li>
+                                    <li class="googleplus"><a target="_blank" href="http://plus.google.com"><i
+                                                    class="fa fa-google-plus"></i></a></li>
+                                    <li class="facebook"><a target="_blank" href="http://www.facebook.com"><i
+                                                    class="fa fa-facebook"></i></a></li>
+                                </ul>
+                            </div>
+                        </footer>
+                    </article>
+                    <div id="comments" class="comments">
+                        <h2 class="title">Commentaires</h2>
+                        {% for comment in object.comments %}
+                            <div class="comment clearfix">
+                                <div class="comment-avatar">
+                                    {% set avatar =
+                                    (comment.user.img is not null)
+                                    ? (comment.user.getAvatarPath()|imagine_filter('small'))
+                                    : asset('bundles/projectfront/images/avatar.jpg') %}
+                                    <img class="img-circle" src="{{ avatar }}"
+                                         alt="{{ comment.user.alt|default('commentaire') }}">
+                                </div>
+                                <header>
+                                    {% if app.user %}
+                                        <div class="comment-meta">
+                                            Par
+                                            <a href="{{ path('application_userbundle_user_public_profil', {'slug' : comment.user.slug}) }}">
+                                                {{ comment.user.username }}
+                                            </a> | {{ comment.createdAt|localizeddate('full', 'none') }}</div>
+                                    {% else %}
+                                        <div class="comment-meta">
+                                            Par {{ comment.user.username }}
+                                            | {{ comment.createdAt|localizeddate('full', 'none') }}
+                                        </div>
+                                    {% endif %}
+                                </header>
+                                <div class="comment-content">
+                                    <div class="comment-body clearfix">
+                                        <p>{{ comment.message|nl2br }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <p>
+                                Aucun commentaire.
+                            </p>
+                        {% endfor %}
+                    </div>
+                    <div class="comments-form">
+                        <h2 class="title">Ajouter un commentaire</h2>
+                        {% if not app.user or form is null %}
+                            <p>Vous devez vous connecter pour laisser un message</p>
+                        {% else %}
+                            {{ form(form, {'id' : 'comment-form'}) }}
+                        {% endif %}
+                    </div>
+                </div>
+                <aside class="col-md-4 col-lg-3 col-lg-offset-1">
+                    <div class="sidebar">
+                        <div class="block clearfix">
+                            <h3 class="title">Sidebar menu</h3>
+                            <div class="separator-2"></div>
+                            <nav>
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li><a href=" TODO ">Home</a></li>
+                                    <li class="active"><a href=" TODO ">Blog</a></li>
+                                    <li><a href=" TODO ">Portfolio</a></li>
+                                    <li><a href=" TODO ">About</a></li>
+                                    <li><a href=" TODO ">Contact</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="block clearfix">
+                            <h3 class="title">Featured Project</h3>
+                            <div class="separator-2"></div>
+                            <div id="carousel-portfolio-sidebar" class="carousel slide" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carousel-portfolio-sidebar" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-portfolio-sidebar" data-slide-to="1"></li>
+                                    <li data-target="#carousel-portfolio-sidebar" data-slide-to="2"></li>
+                                </ol>
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="item active">
+                                        <div class="image-box shadow bordered text-center mb-20">
+                                            <div class="overlay-container">
+                                                <img src="{{ asset('bundles/projectfront/images/avantage-1.jpg') }}"
+                                                     alt=" TODO ">
+                                                <a href=" TODO " class="overlay-link">
+                                                    <i class="fa fa-link"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="image-box shadow bordered text-center mb-20">
+                                            <div class="overlay-container">
+                                                <img src="{{ asset('bundles/projectfront/images/avantage-2.jpg') }}"
+                                                     alt=" TODO ">
+                                                <a href=" TODO " class="overlay-link">
+                                                    <i class="fa fa-link"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="image-box shadow bordered text-center mb-20">
+                                            <div class="overlay-container">
+                                                <img src="{{ asset('bundles/projectfront/images/avantage-3.jpg') }}"
+                                                     alt=" TODO ">
+                                                <a href=" TODO " class="overlay-link">
+                                                    <i class="fa fa-link"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block clearfix">
+                            <h3 class="title">Latest tweets</h3>
+                            <div class="separator-2"></div>
+                            <ul class="tweets">
+                                <li>
+                                    <i class="fa fa-twitter"></i>
+                                    <p><a href=" TODO ">@lorem</a> ipsum dolor sit amet, consectetur adipisicing
+                                        elit.
+                                        Mollitia, aliquid, et molestias nesciunt <a
+                                                href=" TODO ">http://t.co/dzLEYGeEH9</a>.
+                                    </p><span>16 hours ago</span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-twitter"></i>
+                                    <p><a href=" TODO ">@lorem</a> ipsum dolor sit amet, consectetur adipisicing
+                                        elit.
+                                        Mollitia, aliquid, et molestias nesciunt <a
+                                                href=" TODO ">http://t.co/dzLEYGeEH9</a>.
+                                    </p><span>16 hours ago</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="block clearfix">
+                            <h3 class="title">Popular Tags</h3>
+                            <div class="separator-2"></div>
+                            <div class="tags-cloud">
+                                <div class="tag">
+                                    <a href=" TODO ">energy</a>
+                                </div>
+                                <div class="tag">
+                                    <a href=" TODO ">business</a>
+                                </div>
+                                <div class="tag">
+                                    <a href=" TODO ">food</a>
+                                </div>
+                                <div class="tag">
+                                    <a href=" TODO ">fashion</a>
+                                </div>
+                                <div class="tag">
+                                    <a href=" TODO ">finance</a>
+                                </div>
+                                <div class="tag">
+                                    <a href=" TODO ">culture</a>
+                                </div>
+                                <div class="tag">
+                                    <a href=" TODO ">health</a>
+                                </div>
+                                <div class="tag">
+                                    <a href=" TODO ">sports</a>
+                                </div>
+                                <div class="tag">
+                                    <a href=" TODO ">life style</a>
+                                </div>
+                                <div class="tag">
+                                    <a href=" TODO ">books</a>
+                                </div>
+                                <div class="tag">
+                                    <a href=" TODO ">lorem</a>
+                                </div>
+                                <div class="tag">
+                                    <a href=" TODO ">ipsum</a>
+                                </div>
+                                <div class="tag">
+                                    <a href=" TODO ">responsive</a>
+                                </div>
+                                <div class="tag">
+                                    <a href=" TODO ">style</a>
+                                </div>
+                                <div class="tag">
+                                    <a href=" TODO ">finance</a>
+                                </div>
+                                <div class="tag">
+                                    <a href=" TODO ">sports</a>
+                                </div>
+                                <div class="tag">
+                                    <a href=" TODO ">technology</a>
+                                </div>
+                                <div class="tag">
+                                    <a href=" TODO ">support</a>
+                                </div>
+                                <div class="tag">
+                                    <a href=" TODO ">life style</a>
+                                </div>
+                                <div class="tag">
+                                    <a href=" TODO ">books</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block clearfix">
+                            <h3 class="title">Testimonial</h3>
+                            <div class="separator-2"></div>
+                            <blockquote class="margin-clear">
+                                <p>Design is not just what it looks like and feels like. Design is how it works.</p>
+                                <footer><cite title=" TODO ">Steve Jobs </cite></footer>
+                            </blockquote>
+                            <blockquote class="margin-clear">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos dolorem.</p>
+                                <footer><cite title=" TODO ">Steve Doe </cite></footer>
+                            </blockquote>
+                        </div>
+                        <div class="block clearfix">
+                            <h3 class="title">Latest News</h3>
+                            <div class="separator-2"></div>
+                            <div class="media margin-clear">
+                                <div class="media-left">
+                                    <div class="overlay-container">
+                                        <img class="media-object"
+                                             src="{{ asset('bundles/projectfront/images/avantage-3.jpg') }}"
+                                             alt=" TODO ">
+                                        <a href=" TODO " class="overlay-link small"><i
+                                                    class="fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <h6 class="media-heading"><a href=" TODO ">Lorem ipsum dolor sit amet...</a>
+                                    </h6>
+                                    <p class="small margin-clear"><i class="fa fa-calendar pr-10"></i>Mar 23, 2015</p>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="media margin-clear">
+                                <div class="media-left">
+                                    <div class="overlay-container">
+                                        <img class="media-object"
+                                             src="{{ asset('bundles/projectfront/images/avantage-4.jpg') }}"
+                                             alt=" TODO ">
+                                        <a href=" TODO " class="overlay-link small"><i
+                                                    class="fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <h6 class="media-heading"><a href=" TODO ">Lorem ipsum dolor sit amet...</a>
+                                    </h6>
+                                    <p class="small margin-clear"><i class="fa fa-calendar pr-10"></i>Mar 22, 2015</p>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="media margin-clear">
+                                <div class="media-left">
+                                    <div class="overlay-container">
+                                        <img class="media-object"
+                                             src="{{ asset('bundles/projectfront/images/avantage-5.jpg') }}"
+                                             alt=" TODO ">
+                                        <a href=" TODO " class="overlay-link small"><i
+                                                    class="fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <h6 class="media-heading"><a href=" TODO ">Lorem ipsum dolor sit amet...</a>
+                                    </h6>
+                                    <p class="small margin-clear"><i class="fa fa-calendar pr-10"></i>Mar 21, 2015</p>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="media margin-clear">
+                                <div class="media-left">
+                                    <div class="overlay-container">
+                                        <img class="media-object"
+                                             src="{{ asset('bundles/projectfront/images/avantage-6.jpg') }}"
+                                             alt="{# TODO #}">
+                                        <a href="{# TODO #}" class="overlay-link small"><i
+                                                    class="fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <h6 class="media-heading"><a href="{# TODO #}">Lorem ipsum dolor sit amet...</a>
+                                    </h6>
+                                    <p class="small margin-clear"><i class="fa fa-calendar pr-10"></i>Mar 21, 2015</p>
+                                </div>
+                            </div>
+                            <div class="text-right space-top">
+                                <a href="{# TODO #}" class="link-dark"><i
+                                            class="fa fa-plus-circle pl-5 pr-5"></i>More</a>
+                            </div>
+                        </div>
+                        <div class="block clearfix">
+                            <h3 class="title">Text Sample</h3>
+                            <div class="separator-2"></div>
+                            <p class="margin-clear">Debitis eaque officia illo impedit ipsa earum <a href="{# TODO #}">cupiditate
+                                    repellendus</a> corrupti nisi nemo, perspiciatis optio harum, hic laudantium nulla
+                                maiores rem sit magni neque nihil sequi temporibus. Laboriosam ipsum reiciendis iste,
+                                nobis obcaecati, a autem voluptatum odio? Recusandae officiis dicta quod qui eligendi.
+                            </p>
+                        </div>
+                        <div class="block clearfix">
+                            <form role="search">
+                                <div class="form-group has-feedback">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                    <i class="fa fa-search form-control-feedback"></i>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+    <div class="default-bg  default-hovered footer-top animated-text">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="call-to-action text-center">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <h2>Powerful Bootstrap Template</h2>
+                                <h2>Waste no more time</h2>
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="mt-10"><a href="{# TODO #}"
+                                                    class="btn btn-animated btn-lg btn-gray-transparent ">Purchase<i
+                                                class="fa fa-cart-arrow-down pl-20"></i></a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

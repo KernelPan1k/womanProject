@@ -1,0 +1,1071 @@
+a {
+  color: $blue;
+
+  &:hover, &:focus, &:active {
+    color: $blue-hover;
+  }
+}
+
+mark, .mark {
+  background-color: $pink-base;
+  color: $white;
+}
+
+.text-default {
+  color: $pink-base;
+}
+
+/* Tables
+---------------------------------- */
+
+.table.table-colored {
+  border-bottom-color: $pink-base;
+}
+
+.table-colored > thead > tr > th {
+  border-color: $pink-base;
+  background-color: $pink-base;
+  color: $white;
+}
+
+/* 2- Layout
+-------------------------------------------------
+-------------------------------------------------*/
+
+.header-top.dark {
+  background-color: $pink-base;
+  border-bottom: 1px solid $pink-base-hover;
+}
+
+.header.dark {
+  background-color: $blue-base-hover;
+  border-top-color: $blue-base-hover;
+}
+
+.header-top.colored {
+  background-color: $pink-base;
+  border-bottom: 1px solid $pink-base;
+}
+
+.default-bg {
+  background-color: $pink-base;
+  color: $gray;
+  h1 {
+    color: $black;
+  }
+}
+
+.default-bg-50 {
+  background-color: rgba(221, 123, 155, 0.5);
+  color: $white;
+}
+
+/*Transparent Header*/
+
+.transparent-header header.header.dark.transparent-header-on {
+  background-color: rgba(62, 52, 55, 0.8);
+  border-top-color: rgba(36, 30, 32, 0.5);
+}
+
+/*Fixed Navigation*/
+
+.fixed-header-on .dark.header.fixed {
+  background-color: rgba(62, 52, 55, 0.95);
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .fixed-header-on .dark.header .dropdown-menu {
+    border: 1px solid $blue-base;
+  }
+}
+
+/*Translucent Backgrounds*/
+
+.default-translucent-bg {
+  &:after {
+    background-color: rgba(221, 123, 155, 0.7);
+  }
+
+  &.hovered:hover:after {
+    background-color: rgba(221, 123, 155, 0.8);
+  }
+}
+
+.default-hovered:hover {
+  &:after {
+    background-color: $pink-base;
+  }
+
+  background-color: $pink-base;
+}
+
+/* 4 Pages
+-------------------------------------------------
+-------------------------------------------------*/
+/* Blog Timeline layout
+---------------------------------- */
+
+.timeline-date-label:after {
+  background-color: $pink-base;
+}
+
+/* 5 Components
+-------------------------------------------------
+-------------------------------------------------*/
+/* Buttons
+---------------------------------- */
+/*Default Button*/
+
+.btn-default {
+  color: $white;
+  background-color: $pink-base;
+  border-color: $pink-base-hover;
+
+  &:hover, &:focus, &.focus, &:active, &.active {
+    color: $white;
+    background-color: $pink-base-hover;
+    border-color: $pink-base-hover;
+  }
+}
+
+.open > .dropdown-toggle.btn-default {
+  color: $white;
+  background-color: $pink-base-hover;
+  border-color: $pink-base-hover;
+}
+
+.btn-default {
+  &.disabled, &[disabled] {
+    background-color: $pink-base;
+    border-color: $pink-base-hover;
+  }
+}
+
+fieldset[disabled] .btn-default {
+  background-color: $pink-base;
+  border-color: $pink-base-hover;
+}
+
+.btn-default-transparent {
+  color: $gray;
+  background-color: transparent;
+  border-color: $pink-base;
+
+  &:hover, &:focus, &.focus, &:active, &.active {
+    color: $white;
+    background-color: $pink-base-hover;
+    border-color: #d04a76;
+  }
+}
+
+.open > .dropdown-toggle.btn-default-transparent {
+  color: $white;
+  background-color: $pink-base-hover;
+  border-color: #d04a76;
+}
+
+.default-bg .btn-default, .default-translucent-bg .btn-default, .default-bg .btn-default-transparent, .default-translucent-bg .btn-default-transparent {
+  color: $pink-base;
+  background-color: $white;
+  border-color: $white;
+}
+
+.default-bg .btn-default:hover, .default-translucent-bg .btn-default:hover, .default-bg .btn-default:focus, .default-translucent-bg .btn-default:focus, .default-bg .btn-default.focus, .default-translucent-bg .btn-default.focus, .default-bg .btn-default:active, .default-translucent-bg .btn-default:active, .default-bg .btn-default.active, .default-translucent-bg .btn-default.active, .default-bg .open > .dropdown-toggle.btn-default, .default-translucent-bg .open > .dropdown-toggle.btn-default, .default-bg .btn-default-transparent:hover, .default-translucent-bg .btn-default-transparent:hover, .default-bg .btn-default-transparent:focus, .default-translucent-bg .btn-default-transparent:focus, .default-bg .btn-default-transparent.focus, .default-translucent-bg .btn-default-transparent.focus, .default-bg .btn-default-transparent:active, .default-translucent-bg .btn-default-transparent:active, .default-bg .btn-default-transparent.active, .default-translucent-bg .btn-default-transparent.active, .default-bg .open > .dropdown-toggle.btn-default-transparent, .default-translucent-bg .open > .dropdown-toggle.btn-default-transparent {
+  color: $white;
+  background-color: transparent;
+  border-color: $white;
+}
+
+/*White Button*/
+
+.btn-white {
+  color: $gray;
+  background-color: $white;
+  border-color: $white;
+
+  &:hover, &:focus, &.focus, &:active, &.active {
+    color: $pink-base-hover;
+    background-color: $white;
+    border-color: $white;
+  }
+}
+
+.open > .dropdown-toggle.btn-white {
+  color: $pink-base-hover;
+  background-color: $white;
+  border-color: $white;
+}
+
+/*Background Transition*/
+
+.hvr-sweep-to-right:hover, .hvr-sweep-to-left:hover, .hvr-sweep-to-bottom:hover, .hvr-sweep-to-top:hover, .hvr-bounce-to-right:hover, .hvr-bounce-to-left:hover, .hvr-bounce-to-bottom:hover, .hvr-bounce-to-top:hover, .hvr-radial-out:hover, .hvr-rectangle-out:hover, .hvr-shutter-out-horizontal:hover, .hvr-shutter-out-vertical:hover {
+  background: transparent;
+}
+
+.hvr-radial-in, .hvr-rectangle-in, .hvr-shutter-in-horizontal, .hvr-shutter-in-vertical, .hvr-radial-in:hover, .hvr-rectangle-in:hover, .hvr-shutter-in-horizontal:hover, .hvr-shutter-in-vertical:hover {
+  background: $pink-base-hover;
+}
+
+.hvr-radial-in:before, .hvr-rectangle-in:before, .hvr-shutter-in-horizontal:before, .hvr-shutter-in-vertical:before {
+  background: $white;
+}
+
+.hvr-sweep-to-right:before, .hvr-sweep-to-left:before, .hvr-sweep-to-bottom:before, .hvr-sweep-to-top:before, .hvr-bounce-to-right:before, .hvr-bounce-to-left:before, .hvr-bounce-to-bottom:before, .hvr-bounce-to-top:before, .hvr-radial-out:before, .hvr-rectangle-out:before, .hvr-shutter-out-horizontal:before, .hvr-shutter-out-vertical:before {
+  background: $pink-base-hover;
+}
+
+/*ie9*/
+
+.no-csstransitions {
+  .hvr-radial-in, .hvr-rectangle-in, .hvr-shutter-in-horizontal, .hvr-shutter-in-vertical {
+    background: transparent;
+  }
+
+  .hvr-sweep-to-right:hover, .hvr-sweep-to-left:hover, .hvr-sweep-to-bottom:hover, .hvr-sweep-to-top:hover, .hvr-bounce-to-right:hover, .hvr-bounce-to-left:hover, .hvr-bounce-to-bottom:hover, .hvr-bounce-to-top:hover, .hvr-radial-out:hover, .hvr-rectangle-out:hover, .hvr-shutter-out-horizontal:hover, .hvr-shutter-out-vertical:hover, .hvr-radial-in:hover, .hvr-rectangle-in:hover, .hvr-shutter-in-horizontal:hover, .hvr-shutter-in-vertical:hover {
+    background: $pink-base-hover;
+  }
+}
+
+/* Image overlay
+---------------------------------- */
+
+.overlay-top a, .overlay-bottom a, .overlay-to-top a {
+  color: $white;
+}
+
+/* Pager
+---------------------------------- */
+
+ul.pagination li {
+  > a {
+    &:hover, &:focus {
+      background-color: transparent;
+      color: $white;
+      background-color: $pink-base-hover;
+      border-color: $pink-base-hover;
+    }
+  }
+
+  &.active a {
+    color: $white;
+    background-color: $pink-base;
+    border-color: $pink-base;
+  }
+}
+
+.pagination > .active > a {
+  &:hover, &:focus {
+    color: $white;
+    background-color: $pink-base;
+    border-color: $pink-base;
+  }
+}
+
+/* Breadcrumb
+---------------------------------- */
+
+.banner .breadcrumb > li a:hover {
+  color: $pink-base-hover;
+}
+
+/* Nav pills
+---------------------------------- */
+
+.nav-pills {
+  &.style-2 > li {
+    &.active > a {
+      color: $pink-base;
+      background-color: #fafafa;
+      border: 1px solid #eaeaea;
+
+      &:hover, &:focus {
+        color: $pink-base;
+        background-color: #fafafa;
+        border: 1px solid #eaeaea;
+      }
+    }
+
+    > a {
+      &:hover, &:focus {
+        color: $pink-base;
+        background-color: #fafafa;
+        border: 1px solid #eaeaea;
+      }
+    }
+  }
+
+  &.nav-stacked {
+    > li {
+      &.active > a {
+        color: $pink-base;
+        background-color: transparent;
+        border-color: transparent;
+
+        &:hover, &:focus {
+          color: $pink-base;
+          background-color: transparent;
+          border-color: transparent;
+        }
+      }
+
+      > a {
+        &:hover, &:focus {
+          color: $pink-base;
+          background-color: transparent;
+          border-color: transparent;
+        }
+      }
+    }
+
+    &:not(.list-style-icons) > li {
+      &.active > a {
+        &:hover:after, &:focus:after {
+          color: $pink-base-hover;
+        }
+      }
+
+      > a {
+        &:hover:after, &:focus:after {
+          color: $pink-base-hover;
+        }
+      }
+    }
+
+    &.list-style-icons > li {
+      > a > i {
+        color: $gray-lighter;
+      }
+
+      &.active > a > i {
+        color: $pink-base-hover;
+      }
+
+      > a {
+        &:hover > i, &:focus > i {
+          color: $pink-base-hover;
+        }
+      }
+    }
+  }
+
+  > li.active > a:after {
+    color: $pink-base;
+  }
+}
+
+/*footer*/
+
+.dark .footer-content .nav-pills > li {
+  > a {
+    color: $gray-light;
+  }
+
+  &.active {
+    > a {
+      color: $gray-light;
+
+      &:focus {
+        color: $gray-light;
+      }
+    }
+
+    > a:hover {
+      color: $pink-base-hover;
+    }
+  }
+
+  > a:focus {
+    color: $gray-light;
+  }
+
+  > a:hover {
+    color: $pink-base-hover;
+  }
+}
+
+/* Collapse
+---------------------------------- */
+/*Style 2*/
+
+.collapse-style-2 .panel-heading a {
+  color: $white;
+  background-color: $pink-base;
+}
+
+.panel-heading a {
+  color: inherit;
+}
+
+/* Progress bars
+---------------------------------- */
+
+.progress-bar-default {
+  background-color: $pink-base;
+}
+
+/* Forms
+---------------------------------- */
+
+.default-bg {
+  .form-control {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-color: $pink-base-hover;
+    -webkit-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.35);
+    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.35);
+    color: $white;
+  }
+
+  .has-success .form-control:focus, .has-warning .form-control:focus, .has-error .form-control:focus {
+    -webkit-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.35);
+    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.35);
+  }
+
+  .input-group-addon {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-color: $pink-base-hover;
+  }
+
+  .form-control:focus {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .form-control-feedback {
+    color: $white;
+  }
+}
+
+.dark {
+  &.header .form-control, &.header-top .form-control {
+    border-color: $blue-base;
+  }
+}
+
+/*Icons
+---------------------------------- */
+
+.icon {
+  &.default-bg {
+    background-color: $pink-base;
+    color: $white;
+  }
+
+  &.light-bg {
+    background-color: $white;
+    color: $pink-base;
+  }
+}
+
+/*Listing Items
+---------------------------------- */
+
+.listing-item .overlay-container .badge {
+  border: 1px solid $pink-base;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: $pink-base;
+}
+
+/*Modals
+---------------------------------- */
+
+.modal-content {
+  .modal-header {
+    background-color: $pink-base;
+  }
+
+  .modal-title {
+    color: $white;
+  }
+}
+
+/*Breadcrumb
+---------------------------------- */
+
+.banner .dark.breadcrumb-container {
+  background-color: rgba(62, 52, 55, 0.6);
+}
+
+/*Pace (Page loader)
+---------------------------------- */
+
+.page-loader-1 .pace {
+  border: 1px solid $pink-base;
+
+  .pace-progress {
+    background: $pink-base;
+  }
+}
+
+.page-loader-2 .pace {
+  .pace-progress:before {
+    background: $pink-base;
+  }
+
+  .pace-activity {
+    border: 5px solid $pink-base;
+
+    &:after, &:before {
+      border: 5px solid $pink-base;
+    }
+  }
+}
+
+.page-loader-3 .pace .pace-progress, .page-loader-4 .pace .pace-progress {
+  background: $pink-base;
+}
+
+.page-loader-5 .pace .pace-progress:after {
+  color: $pink-base;
+}
+
+.page-loader-6 .pace .pace-activity {
+  background: $pink-base;
+}
+
+/* 6 Navigations
+-------------------------------------------------
+-------------------------------------------------*/
+/* 6.1 Light Version
+---------------------------------- */
+/* first level menu item on hover/focus */
+
+.navbar-default .navbar-nav > {
+  li > a {
+    &:hover, &:focus {
+      background-color: transparent;
+      color: $blue;
+    }
+  }
+
+  .active > a {
+    background-color: transparent;
+    color: $blue;
+    border-bottom: 4px solid $pink-base;
+
+    &:hover, &:focus {
+      background-color: transparent;
+      color: $blue-hover;
+    }
+  }
+}
+
+.transparent-header .header:not(.dark) .navbar-nav > li {
+  &.open > a {
+    color: $pink-base;
+  }
+
+  > a {
+    &:hover, &:focus {
+      color: $pink-base;
+    }
+  }
+}
+
+/* first level menu item when opened */
+
+.main-navigation .navbar-nav > {
+  .open > a {
+    background-color: $white;
+    color: $blue;
+    border-bottom-color: $white;
+    border-right: 1px solid #f5f5f5;
+    border-left: 1px solid #f5f5f5;
+
+    &:hover, &:focus {
+      background-color: $white;
+      color: $blue-hover;
+      border-bottom-color: $white;
+      border-right: 1px solid #f5f5f5;
+      border-left: 1px solid #f5f5f5;
+    }
+  }
+
+  .dropdown > a:focus {
+    background-color: $white;
+    color: $blue;
+    border-bottom-color: $white;
+    border-right: 1px solid #f5f5f5;
+    border-left: 1px solid #f5f5f5;
+  }
+}
+
+/* second level menu item on focus/hover and when opened */
+
+.dropdown-menu > li > a {
+  &:hover, &:focus {
+    background-color: #fcfcfc;
+    color: $blue;
+    border-color: #f7f7f7;
+  }
+}
+
+.nav .open > a {
+  background-color: #fcfcfc;
+  color: $pink-base-hover;
+  border-color: #f7f7f7;
+
+  &:hover, &:focus {
+    background-color: #fcfcfc;
+    color: $pink-base-hover;
+    border-color: #f7f7f7;
+  }
+}
+
+.dropdown-menu {
+  > .active > a {
+    background-color: #fcfcfc;
+    color: $pink-base-hover;
+    border-color: #f7f7f7;
+
+    &:hover, &:focus {
+      background-color: #fcfcfc;
+      color: $pink-base-hover;
+      border-color: #f7f7f7;
+    }
+  }
+
+  .menu > .active > a {
+    background-color: #fcfcfc;
+    color: $pink-base-hover;
+    border-color: #f7f7f7;
+
+    &:hover, &:focus {
+      background-color: #fcfcfc;
+      color: $pink-base-hover;
+      border-color: #f7f7f7;
+    }
+  }
+}
+
+/* Mega Menu 
+------------------------------ */
+
+header:not(.dark) {
+  .mega-menu .menu > li > a:hover i, .dropdown-menu > li > a:hover i, .mega-menu .menu > li.active > a i, .dropdown-menu > li.active > a i {
+    color: $pink-base;
+  }
+}
+
+/* mega menu menu item on focus/hover*/
+
+.mega-menu .menu > li > a {
+  &:hover, &:focus {
+    background-color: #fcfcfc;
+    color: $pink-base-hover;
+    border-color: #f7f7f7;
+    text-decoration: none;
+  }
+}
+
+/* Arrow for parent menu item 
+------------------------------ */
+
+.header:not(.dark) {
+  .active.dropdown > a:before, &.centered .active.dropdown > a:before {
+    color: $pink-base;
+  }
+}
+
+.transparent-header .header:not(.dark) {
+  .dropdown:not(.open):not(.active) > a:before {
+    color: $gray;
+  }
+
+  .navbar-default .navbar-nav > .dropdown.open > a:before {
+    color: $pink-base;
+  }
+}
+
+.dropdown .dropdown.open > a:before, .header.centered:not(.dark) .dropdown .dropdown.open > a:before {
+  color: $pink-base;
+}
+
+/* Mobile Menu
+------------------------------ */
+/* mobile menu toggle button on hover/focus */
+
+.navbar-default .navbar-toggle {
+  border-color: #ccc;
+
+  &:hover, &:focus {
+    background-color: #fafafa;
+    border-color: $pink-base-hover;
+  }
+
+  .icon-bar {
+    background-color: #ccc;
+  }
+
+  &:hover .icon-bar, &:focus .icon-bar {
+    background-color: $pink-base-hover;
+  }
+}
+
+/* Small devices (tablets, phones less than 767px) */
+@media (max-width: 767px) {
+  /* Mobile menu
+	------------------------------ */
+  /* active item */
+
+  .navbar-default .navbar-nav {
+    .open .dropdown-menu {
+      > .active > a {
+        color: $pink-base-hover;
+        background-color: transparent;
+
+        &:hover, &:focus {
+          color: $pink-base-hover;
+          background-color: transparent;
+        }
+      }
+
+      > li > a {
+        &:hover, &:focus {
+          color: $pink-base-hover;
+        }
+      }
+    }
+
+    > {
+      li > a {
+        &:hover, &:focus {
+          color: $pink-base-hover;
+          background-color: $white;
+          border-bottom-color: transparent;
+        }
+      }
+
+      .active > a {
+        color: $pink-base-hover;
+        background-color: $white;
+        border-bottom-color: transparent;
+
+        &:hover, &:focus {
+          color: $pink-base-hover;
+          background-color: $white;
+          border-bottom-color: transparent;
+        }
+      }
+    }
+
+    > .dropdown.open > a:before {
+      color: $pink-base;
+    }
+  }
+
+  /* first level item hover and focus states */
+
+  /* second level item on hover/focus */
+
+  /* Arrow for parent menu item */
+}
+
+/* 6.2 Dark Version
+------------------------------ */
+/* first level active menu item when opened */
+
+.dark.header {
+  .main-navigation .navbar-nav > {
+    .open > a {
+      border-bottom-color: $blue-base;
+
+      &:hover, &:focus {
+        border-bottom-color: $blue-base;
+      }
+    }
+
+    .dropdown > a:focus {
+      border-bottom-color: $blue-base;
+    }
+  }
+
+  .dropdown-menu {
+    background-color: $blue-base;
+    border: 1px solid rgba(62, 52, 55, 0.8);
+
+    .divider {
+      background-color: $blue-base-hover;
+    }
+
+    > li > a {
+      border-bottom: 1px solid rgba(62, 52, 55, 0.8);
+    }
+  }
+
+  .mega-menu .menu > li > a {
+    border-bottom: 1px solid rgba(62, 52, 55, 0.8);
+
+    &:hover, &:focus {
+      border-color: rgba(62, 52, 55, 0.8);
+    }
+  }
+
+  .dropdown-menu > li > a {
+    &:hover, &:focus {
+      border-color: rgba(62, 52, 55, 0.8);
+    }
+  }
+
+  .nav .open > a {
+    border-color: rgba(62, 52, 55, 0.8);
+
+    &:hover, &:focus {
+      border-color: rgba(62, 52, 55, 0.8);
+    }
+  }
+
+  .dropdown-menu {
+    > .active > a {
+      border-color: rgba(62, 52, 55, 0.8);
+
+      &:hover, &:focus {
+        border-color: rgba(62, 52, 55, 0.8);
+      }
+    }
+
+    .menu > .active > a {
+      border-color: rgba(62, 52, 55, 0.8);
+
+      &:hover, &:focus {
+        border-color: rgba(62, 52, 55, 0.8);
+      }
+    }
+  }
+}
+
+/* second level menu item */
+
+/* Small devices (tablets, phones less than 767px) */
+@media (max-width: 767px) {
+  .transparent-header .dark .main-navigation .navbar.navbar-default {
+    background-color: rgba(62, 52, 55, 0.9);
+    border-color: rgba(36, 30, 32, 0.5);
+  }
+}
+
+/* 6.3 Subfooter navigation
+------------------------------ */
+
+.subfooter .navbar-default .nav > {
+  li > a:hover {
+    background-color: transparent;
+    text-decoration: underline;
+    color: $pink-base-hover;
+  }
+
+  .active > a {
+    &:hover, &:focus {
+      background-color: transparent;
+      text-decoration: underline;
+      color: $pink-base-hover;
+    }
+  }
+}
+
+/* 6.3 Offcanvas navigation
+------------------------------ */
+
+#offcanvas {
+  .nav {
+    .open > a {
+      color: $pink-base-hover;
+      background-color: $white;
+
+      &:hover, &:focus {
+        color: $pink-base-hover;
+        background-color: $white;
+      }
+    }
+
+    > li > a {
+      &:hover, &:focus {
+        color: $pink-base-hover;
+        background-color: $white;
+      }
+    }
+  }
+
+  .navbar-nav > li.active > a {
+    color: $pink-base-hover;
+    background-color: $white;
+  }
+
+  .dropdown {
+    > a:before {
+      color: $gray;
+    }
+
+    &.open > a:before {
+      color: $pink-base;
+    }
+  }
+}
+
+/*Nav arrows*/
+
+/* 7 Blocks/Widgets
+-------------------------------------------------
+-------------------------------------------------*/
+/* Social icons block
+------------------------------ */
+
+.social-links li a {
+  border: 1px solid #e7e7e7;
+  color: $gray-lighter;
+
+  &:hover {
+    background-color: transparent;
+    border-color: $pink-base-hover;
+    color: $pink-base-hover;
+  }
+}
+
+.dark.social-links li a {
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: $white;
+}
+
+.social-links.animated-effect-1 li a {
+  &:hover {
+    color: $white !important;
+  }
+
+  &:after {
+    background-color: $pink-base;
+  }
+}
+
+.default.social-links li a {
+  background-color: $pink-base;
+  border: 1px solid $pink-base-hover;
+  color: $white;
+
+  &:hover {
+    background-color: $white;
+    color: $gray;
+  }
+}
+
+/*Header Top Dropdowns*/
+
+.header-top {
+  &:not(.dark) .social-links .dropdown.open > button > i:before {
+    color: $pink-base;
+  }
+
+  &.colored .social-links .dropdown {
+    > button > i:before, &.open > button > i:before {
+      color: $white;
+    }
+  }
+}
+
+.dark.header-top .dropdown-menu {
+  border: 1px solid $pink-base-hover;
+  border-top: none;
+  background: $pink-light;
+  * {
+    color: $gray
+  }
+  input[type=text], input[type=password] {
+    background-color: $white;
+  }
+}
+
+.header-dropdown-buttons .btn-group {
+  .dropdown-menu {
+    border: none;
+  }
+
+  > .btn {
+    background-color: #f2f2f2;
+    border: 1px solid #e9e9e9;
+
+    &:hover {
+      background-color: $pink-base;
+      color: $white;
+      border-color: $pink-base-hover;
+    }
+  }
+
+  &.open > .btn {
+    background-color: $pink-base;
+    color: $white;
+    border-color: $pink-base-hover;
+  }
+}
+
+/* Full Width Content
+---------------------------------- */
+/* Medium devices (tablets, phones) */
+@media (max-width: 1199px) {
+  .full-width-section:not(.no-image) .full-text-container.default-bg {
+    background-color: rgba(221, 123, 155, 0.6);
+  }
+}
+
+/*Header Dropdowns (search, cart etc)
+---------------------------------- */
+
+.colored.header-top .dropdown-menu {
+  border: 1px solid $pink-base;
+  background: $pink-base;
+}
+
+/* Media 
+---------------------------------- */
+
+.media:hover .icon {
+  background-color: transparent;
+  color: $pink-base;
+  border: 1px solid $pink-base;
+}
+
+/* Pricing tables
+---------------------------------- */
+
+.popover-title {
+  background-color: $pink-base;
+  color: $white;
+}
+
+/* Tags cloud block
+---------------------------------- */
+
+.tag a {
+  color: $white;
+  background-color: $blue;
+  border: 1px solid $blue-hover;
+
+  &:hover {
+    color: $gray;
+    background-color: $pink-base;
+    border-color: $pink-base-hover;
+    text-decoration: none;
+  }
+}
+
+/* 8 Main Slideshow
+-------------------------------------------------
+-------------------------------------------------*/
+
+.tp-bannertimer {
+  background-color: rgba(221, 123, 155, 0.8);
+}
+
+/* 9 Owl Carousel
+-------------------------------------------------
+-------------------------------------------------*/
+
+.content-slider-with-large-controls .owl-buttons .owl-prev:after, .content-slider-with-large-controls-autoplay .owl-buttons .owl-prev:after, .content-slider-with-large-controls .owl-buttons .owl-next:after, .content-slider-with-large-controls-autoplay .owl-buttons .owl-next:after {
+  color: $pink-base;
+}
+
+/* 10 Full Page
+-------------------------------------------------
+-------------------------------------------------*/
+
+#fp-nav ul li a span, .fp-slidesNav ul li a span {
+  background: rgba(221, 123, 155, 0.8);
+}

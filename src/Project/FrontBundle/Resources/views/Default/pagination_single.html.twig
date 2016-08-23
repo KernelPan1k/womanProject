@@ -1,0 +1,15 @@
+{% if pageCount > 1 %}
+    <ul class="pagination">
+        {% if next is defined %}
+            <li>
+                <a class="next-result" rel="next" href="{{ path(route, query|merge({(pageParameterName): next})) }}">
+                    Voir +
+                </a>
+            </li>
+        {% else %}
+            <li class="disabled">
+                <span>Aucun autre résultat</span>
+            </li>
+        {% endif %}
+    </ul>
+{% endif %}

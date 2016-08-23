@@ -1,0 +1,205 @@
+{% extends 'ProjectBackBundle:Default:base.html.twig' %}
+{% block content %}
+    <div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>{{ object.title }}</h3>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>
+                        Informations
+                    </h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a
+                                    href="{{ path('project_back_taken_edit', {'id' : object.id}) }}"
+                                    class="close-link"><i class="fa fa-edit"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a title="Supprimer l'actualité"
+                               onclick="return confirm('!!! Etes vous sur ?')"
+                               href="{{ path('project_back_taken_remove', {'id' : object.id, 'token': csrf_token('taken_remove_'~object.id)}) }}"
+                            ><i class="fa fa-close"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
+                        <div class="profile_img">
+                            <div id="crop-avatar">
+                                {% set img =
+                                (object.img is not null)
+                                ? (object.imgPath()|imagine_filter('medium'))
+                                : asset('bundles/projectfront/images/avatar.jpg') %}
+                                <div class="fix-overlay">
+                                    <img
+                                            alt="" src="{{ img }}"
+                                            class="img-responsive img-center">
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <ul class="list-unstyled user_data">
+                            <li>
+                                <i class="fa fa-sort-numeric-asc user-profile-icon"></i> id: {{ object.id }}
+                            </li>
+                            <li>
+                                <i class="fa fa-user user-profile-icon"></i> Autheur :
+                                <a href="{{ path('project_back_user_display', {'id' : object.user.id }) }}">
+                                    {{ object.user.username }}
+                                </a>
+                            </li>
+                            <li>
+                                <i class="fa fa-map"></i>
+                                Ville
+                                : {{ object.city.name }} {{ object.city.region.name }} {{ object.city.region.country.name }}
+                            </li>
+                            <li>
+                                <i class="fa fa-times"></i> Créer le : {{ object.createdAt|date('d/m/Y') }}
+                            </li>
+                            <li>
+                                <i class="fa fa-tags"></i> Catégories : {{ object.category.name }}
+                            </li>
+                            <li>
+                                <i class="fa fa-calendar"></i>
+                                du {{ object.startDate|localizeddate('full') }}
+                                au {{ object.endDate|localizeddate('full') }}
+                            </li>
+                            <li>
+                                <i class="fa fa-euro"></i> Prix : {{ object.price }}
+                            </li>
+                            <li>
+                                <i class="fa fa-euro"></i> Nombre : {{ object.nbrPerson }}
+                            </li>
+                        </ul>
+                        <a class="btn btn-success" href="{{ path('project_back_taken_edit', {'id' : object.id }) }}">
+                            <i class="fa fa-edit m-right-xs"></i>Editer la sortie
+                        </a>
+                    </div>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        <div class="profile_title">
+                            <div class="col-md-6">
+                                <div style="margin-top: 5px; background:#fff; cursor: pointer; padding: 5px 10px; border: 1px solid #E6E9ED"
+                                     class="pull-right" id="reportrange">
+                                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                                    <span>Dernière modification le :
+                                        {{ object.updatedAt is not null ? object.updatedAt|date('d/m/Y') : 'Jamais' }}
+                                        </span>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div>
+                            {{ object.description|raw }}
+                        </div>
+                        <br>
+                        <br>
+                        <div data-example-id="togglable-tabs" role="tabpanel" class="">
+                            <ul role="tablist" class="nav nav-tabs bar_tabs" id="myTab">
+                                <li class="active" role="presentation"><a aria-expanded="true" data-toggle="tab"
+                                                                          role="tab" id="home-tab"
+                                                                          href="#tab_content1">Commentaires</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <div aria-labelledby="home-tab" id="tab_content1" class="tab-pane fade active in"
+                                     role="tabpanel">
+                                    <ul class="messages">
+                                        <li>
+                                            <img alt="Avatar" class="avatar" src="images/img.jpg">
+                                            <div class="message_date">
+                                                <h3 class="date text-info">24</h3>
+                                                <p class="month">May</p>
+                                            </div>
+                                            <div class="message_wrapper">
+                                                <h4 class="heading">Desmond Davison</h4>
+                                                <blockquote class="message">Raw denim you probably haven't heard of
+                                                    them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher
+                                                    retro keffiyeh dreamcatcher synth.
+                                                </blockquote>
+                                                <br>
+                                                <p class="url">
+                                                        <span data-icon="" aria-hidden="true"
+                                                              class="fs1 text-info"></span>
+                                                    <a href="#"><i class="fa fa-paperclip"></i> User Acceptance
+                                                        Test.doc </a>
+                                                </p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <img alt="Avatar" class="avatar" src="images/img.jpg">
+                                            <div class="message_date">
+                                                <h3 class="date text-error">21</h3>
+                                                <p class="month">May</p>
+                                            </div>
+                                            <div class="message_wrapper">
+                                                <h4 class="heading">Brian Michaels</h4>
+                                                <blockquote class="message">Raw denim you probably haven't heard of
+                                                    them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher
+                                                    retro keffiyeh dreamcatcher synth.
+                                                </blockquote>
+                                                <br>
+                                                <p class="url">
+                                                    <span data-icon="" aria-hidden="true" class="fs1"></span>
+                                                    <a data-original-title="" href="#">Download</a>
+                                                </p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <img alt="Avatar" class="avatar" src="images/img.jpg">
+                                            <div class="message_date">
+                                                <h3 class="date text-info">24</h3>
+                                                <p class="month">May</p>
+                                            </div>
+                                            <div class="message_wrapper">
+                                                <h4 class="heading">Desmond Davison</h4>
+                                                <blockquote class="message">Raw denim you probably haven't heard of
+                                                    them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher
+                                                    retro keffiyeh dreamcatcher synth.
+                                                </blockquote>
+                                                <br>
+                                                <p class="url">
+                                                        <span data-icon="" aria-hidden="true"
+                                                              class="fs1 text-info"></span>
+                                                    <a href="#"><i class="fa fa-paperclip"></i> User Acceptance
+                                                        Test.doc </a>
+                                                </p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <img alt="Avatar" class="avatar" src="images/img.jpg">
+                                            <div class="message_date">
+                                                <h3 class="date text-error">21</h3>
+                                                <p class="month">May</p>
+                                            </div>
+                                            <div class="message_wrapper">
+                                                <h4 class="heading">Brian Michaels</h4>
+                                                <blockquote class="message">Raw denim you probably haven't heard of
+                                                    them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher
+                                                    retro keffiyeh dreamcatcher synth.
+                                                </blockquote>
+                                                <br>
+                                                <p class="url">
+                                                    <span data-icon="" aria-hidden="true" class="fs1"></span>
+                                                    <a data-original-title="" href="#">Download</a>
+                                                </p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

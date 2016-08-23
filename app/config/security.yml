@@ -1,0 +1,45 @@
+security:
+    encoders:
+         harsh:
+            algorithm: bcrypt
+            cost: 15
+         default_hash:
+            algorithm: bcrypt
+            cost: 8
+
+    role_hierarchy:
+        ROLE_REDACTEUR:   ROLE_USER
+        ROLE_ADMIN:       ROLE_REDACTEUR
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+    firewalls:
+        main:
+            pattern: ^/
+            form_login:
+                login_path: /
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager
+                always_use_default_target_path: true
+                default_target_path: /
+                use_referer: false
+                use_forward: false
+                failure_path: /
+                failure_forward: false
+                post_only: true
+            logout:
+                path: /logout
+                target: /
+                invalidate_session: true
+            anonymous:
+                secret: "%secret%"
+            anonymous: true
+
+    access_control:
+        - { path: ^/91ee52e90fcdbaeed8d2275f59ac1b0c$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/inscription, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/nouveau-mot-de-passe, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/panel/, role: ROLE_SUPER_ADMIN }

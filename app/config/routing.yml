@@ -1,0 +1,27 @@
+sg_datatables_bundle:
+    resource: "@SgDatatablesBundle/Controller/"
+    type:     annotation
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"
+
+application_user:
+    resource: "@ApplicationUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+fos_user:
+    resource: "@ApplicationUserBundle/Resources/config/all.xml"
+
+project_back:
+    resource: "@ProjectBackBundle/Controller/"
+    type:     annotation
+    prefix:   /panel
+
+project_front:
+    resource: "@ProjectFrontBundle/Controller/"
+    type:     annotation
+    prefix:   /

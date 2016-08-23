@@ -1,0 +1,55 @@
+<div class="col-md-3 left_col menu_fixed">
+    <div class="left_col scroll-view">
+        <div class="navbar nav_title" style="border: 0;">
+            <a href="{{ path('project_back_default_index') }}" class="site_title"><i class="fa fa-home"></i> <span>Entre amies</span></a>
+        </div>
+        <div class="clearfix"></div>
+        <div class="profile">
+            <div class="profile_pic">
+                <img style="width: 40px;" src="{{ asset('bundles/projectfront/images/logofleur.png') }}" alt="..."
+                     class="img-circle profile_img">
+            </div>
+            <div class="profile_info">
+                <span>Salut,</span>
+                <h2>{{ app.user.username }}</h2>
+            </div>
+        </div>
+        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+            <div class="menu_section">
+                <h3>Menu</h3>
+                <ul class="nav side-menu">
+                    <li><a href="{{ path('project_back_user_index') }}"><i class="fa fa-user"></i> Utiisateurs</a></li>
+                    <li><a href="{{ path('project_back_news_index') }}"><i class="fa fa-sticky-note"></i> Actualités</a>
+                    </li>
+                    <li><a href="{{ path('project_back_context_index') }}"><i class="fa fa-sitemap"></i> Context</a>
+                    </li>
+                    <li><a href="{{ path('project_back_category_index') }}"><i class="fa fa-tags"></i> Catégories</a>
+                    <li><a href="{{ path('project_back_taken_index') }}"><i class="fa fa-bicycle"></i> Sorties</a>
+                    <li><a href="{{ path('project_back_forum_index') }}"><i class="fa fa-comment"></i> Forum</a>
+                    <li>
+                        <a href="{{ path('project_back_forumpost_index') }}"><i class="fa fa-commenting"></i>
+                            Forum Post
+                        </a>
+                    <li><a href="{{ path('project_back_postresponse_index') }}"><i class="fa fa-share-square-o"></i>
+                            Forum réponses
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="sidebar-footer hidden-small">
+            <a data-toggle="tooltip" data-placement="top" title="Settings">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Lock">
+                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Logout">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+            </a>
+        </div>
+    </div>
+</div>

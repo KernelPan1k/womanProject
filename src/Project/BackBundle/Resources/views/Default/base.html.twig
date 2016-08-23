@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="{{ asset('bundles/projectfront/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/projectfront/fonts/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/projectback/css/green.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/projectback/css/bootstrap-progressbar-3.3.4.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/projectback/css/custom.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/projectfront/dist/css/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/projectback/css/datatables.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/projectback/css/perso.css') }}" rel="stylesheet">
+    <script type="text/javascript" src="{{ asset('bundles/projectfront/plugins/jquery.min.js') }}"></script>
+
+</head>
+<body class="nav-sm">
+<div class="container body">
+    <div class="main_container">
+        {% include 'ProjectBackBundle:Default:sidebar.html.twig' %}
+        {% include 'ProjectBackBundle:Default:navigation.html.twig' %}
+        <div class="right_col" role="main">
+            {% block content %}{% endblock %}
+        </div>
+        <footer>
+            <div class="pull-right">
+                Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+            </div>
+            <div class="clearfix"></div>
+        </footer>
+    </div>
+</div>
+<script type="text/javascript" src="{{ asset('bundles/projectfront/bootstrap/js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/projectback/js/fastclick.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/projectback/js/nprogress.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/projectback/js/Chart.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/projectback/js/gauge.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/projectback/js/bootstrap-progressbar.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/projectback/js/icheck.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/projectback/js/skycons.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/projectback/js/jquery.flot.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/projectback/js/jquery.flot.pie.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/projectback/js/jquery.flot.time.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/projectback/js/jquery.flot.stack.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/projectback/js/jquery.flot.resize.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/projectback/js/jquery.flot.orderBars.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/projectback/js/date.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/projectback/js/jquery.flot.spline.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/projectback/js/curvedLines.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/projectback/js/jquery-jvectormap-2.0.3.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/projectback/js/moment.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/projectback/js/daterangepicker.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/projectback/js/custom.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/projectback/js/jquery-jvectormap-world-mill-en.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/projectback/js/jquery-jvectormap-us-aea-en.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/projectback/js/gdp-data.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/projectfront/dist/js/select2.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/projectback/js/custom-back.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/projectback/js/datatables.min.js') }}"></script>
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+{% block javascript %}{% endblock %}
+</body>
+</html>

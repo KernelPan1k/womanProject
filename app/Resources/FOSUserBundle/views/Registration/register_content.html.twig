@@ -1,0 +1,130 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% block content %}
+    <div class="pv-40 signup-translucent-bg">
+        <div class="container">
+            <div class="object-non-visible text-center" data-animation-effect="fadeInDownSmall" data-effect-delay="100">
+                <div class="form-block center-block p-30 light-gray-bg border-clear text-left">
+                    <h2 class="title">{{ 'form.signup'|trans([], 'forms') }}</h2>
+
+                    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'form-horizontal', 'role':'form' }}) }}
+
+                    <div class="form-group has-feedback
+                    {% if not form.username.vars.valid %}
+                        has-error" data-toggle="tooltip" data-placement="top"
+                         title="{{ form.username.vars.errors.0.message }}
+                    {% endif %}">
+                        <label for="" class="col-sm-3 control-label">{{ 'form.username'|trans([], 'forms') }}
+                            <span class="text-danger small">*</span>
+                        </label>
+                        <div class="col-sm-8">
+                            {{ form_widget(form.username, {'attr' : {'class' : 'form-control' }}) }}
+                            <i class="fa fa-pencil form-control-feedback"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group has-feedback
+                    {% if not form.email.vars.valid %}
+                        has-error" data-toggle="tooltip" data-placement="top"
+                         title="{{ form.email.vars.errors.0.message }}
+                    {% endif %}">
+                        <label for="" class="col-sm-3 control-label">{{ 'form.email'|trans([], 'forms') }}
+                            <span class="text-danger small">*</span>
+                        </label>
+                        <div class="col-sm-8">
+                            {{ form_widget(form.email, {'attr' : {'class' : 'form-control' }}) }}
+                            <i class="fa fa-envelope form-control-feedback"></i>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback
+                    {% if not form.plainPassword.first.vars.valid %}
+                        has-error" data-toggle="tooltip" data-placement="top"
+                         title="{{ form.plainPassword.first.vars.errors.0.message }}
+                    {% endif %}">
+                        <label for="" class="col-sm-3 control-label">{{ 'form.password'|trans([], 'forms') }}
+                            <span class="text-danger small">*</span>
+                        </label>
+                        <div class="col-sm-8">
+                            {{ form_widget(form.plainPassword.first, {'attr' : {'class' : 'form-control' }}) }}
+                            <i class="fa fa-lock form-control-feedback"></i>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback
+                    {% if not form.plainPassword.second.vars.valid %}
+                        has-error" data-toggle="tooltip" data-placement="top"
+                         title="{{ form.plainPassword.second.vars.errors.0.message }}
+                    {% endif %}">
+                        <label for="" class="col-sm-3 control-label">{{ 'form.password.verify'|trans([], 'forms') }}
+                            <span class="text-danger small">*</span>
+                        </label>
+                        <div class="col-sm-8">
+                            {{ form_widget(form.plainPassword.second, {'attr' : {'class' : 'form-control' }}) }}
+                            <i class="fa fa-lock form-control-feedback"></i>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback
+                    {% if not form.lastName.vars.valid %}
+                        has-error" data-toggle="tooltip" data-placement="top"
+                         title="{{ form.lastName.vars.errors.0.message }}
+                    {% endif %}">
+                        <label for="" class="col-sm-3 control-label">{{ 'form.lastName'|trans([], 'forms') }}
+                            <span class="text-danger small">*</span>
+                        </label>
+                        <div class="col-sm-8">
+                            {{ form_widget(form.lastName, {'attr' : {'class' : 'form-control' }}) }}
+                            <i class="fa fa-pencil form-control-feedback"></i>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback
+                    {% if not form.firstName.vars.valid %}
+                        has-error" data-toggle="tooltip" data-placement="top"
+                         title="{{ form.firstName.vars.errors.0.message }}
+                    {% endif %}">
+                        <label for="" class="col-sm-3 control-label">{{ 'form.firstName'|trans([], 'forms') }}
+                            <span class="text-danger small">*</span>
+                        </label>
+                        <div class="col-sm-8">
+                            {{ form_widget(form.firstName, {'attr' : {'class' : 'form-control' }}) }}
+                            <i class="fa fa-pencil form-control-feedback"></i>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback
+                    {% if not form.dateOfBirth.vars.valid %}
+                        has-error" data-toggle="tooltip" data-placement="top"
+                         title="{{ form.dateOfBirth.vars.errors.0.message }}
+                    {% endif %}">
+                        <label for="" class="col-sm-3 control-label">{{ 'form.dateOfBirth'|trans([], 'forms') }}
+                            <span class="text-danger small">*</span>
+                        </label>
+                        <div class="col-sm-8">
+                            {{ form_widget(form.dateOfBirth, {'attr' : {'class' : 'form-control js-datepicker' }}) }}
+                            <i class="fa fa-calendar form-control-feedback"></i>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback
+                    {% if not form.cgu.vars.valid %}
+                        has-error" data-toggle="tooltip" data-placement="top"
+                         title="{{ form.cgu.vars.errors.0.message }}
+                    {% endif %}">
+                        <div class="col-sm-offset-3 col-sm-8">
+                            <div class="checkbox">
+                                <label>
+                                    {{ form_widget(form.cgu) }} {# TODO #}
+                                    {{ 'form.cgu'|trans({'%link_start%' : '<a href="'~path('fos_user_profile_show')~'">', '%link_end%' : '</a>'}, 'forms') | raw }}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-8">
+                            <input type="submit"
+                                   value="{{ 'registration.submit'|trans }}"
+                                   class="btn btn-group btn-default btn-animated"/>
+                            <i class="fa fa-check"></i>
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
